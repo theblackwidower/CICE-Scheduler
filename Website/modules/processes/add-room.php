@@ -12,6 +12,7 @@ if ($room_number == "")
 
 if ($result == "")
 {
+	$room_number = parse_room_number($room_number);
 	if (room_exists($room_number))
 		$result .= "Room number is already registered.<br />";
 	else

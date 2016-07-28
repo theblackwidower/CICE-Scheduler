@@ -12,16 +12,16 @@ if ($course_name == "")
 
 if ($result == "")
 {
-	$new_course_code = parse_course_code($course_code);
-	if ($new_course_code === false)
+	$course_code = parse_course_code($course_code);
+	if ($course_code === false)
 		$result = "Invalid course code entered. Must have no more than five letters, followed by no more than five numbers.";
 	else
 	{
-		if (course_exists($new_course_code))
+		if (course_exists($course_code))
 			$result = "Course code is already registered.";
 		else
 		{
-			$code = add_course($new_course_code, $course_name);
+			$code = add_course($course_code, $course_name);
 			if ($code === true)
 				$result = true;
 			else

@@ -145,6 +145,28 @@ function set_default_semester($semester_id)
 		return false;
 }
 
+
+/*
+parse_room_number:
+room_number: room number to parse
+Formats room number for storage in the database.
+*/
+function parse_room_number($room_number)
+{
+	$return = "";
+
+	for ($i = 0; $i < strlen($room_number); $i++)
+	{
+		if (ctype_alpha($room_number[$i]))
+			$return .= strtoupper($room_number[$i]);
+		else if (ctype_digit($room_number[$i]))
+			$return .= $room_number[$i];
+	}
+
+	return $return;
+}
+
+
 /*
 parse_course_code:
 course_code: course code to parse
@@ -162,9 +184,9 @@ function parse_course_code($course_code)
 		if (ctype_alpha($course_code[$i]))
 		{
 			if (!$is_second_half)
-				$course_code_1 .= $course_code[$i];
+				$course_code_1 .= strtoupper($course_code[$i]);
 			else
-				$course_code_2 .= $course_code[$i];
+				$course_code_2 .= strtoupper($course_code[$i]);
 		}
 		else if (ctype_digit($course_code[$i]))
 		{

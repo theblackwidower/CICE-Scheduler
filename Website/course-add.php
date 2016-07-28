@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 	if ($result === true)
 	{
-		$result = "Course <em>".$new_course_code."</em> successfully added.";
+		$result = "Course <em>".$course_code."</em> successfully added.";
 		$course_code = "";
 		$course_name = "";
 	}
