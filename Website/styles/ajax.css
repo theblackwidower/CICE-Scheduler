@@ -1,0 +1,241 @@
+/**************
+* LOGIN POPUP *
+**************/
+
+#click_shield
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(128, 128, 128, .75);
+	text-align: center;
+	padding-top: 5em;
+}
+#login_popup
+{
+	border: 2px solid black;
+	display: inline-block;
+	padding: 5em;
+	background-color: white;
+	border-radius: 2em;
+}
+/*******
+* AJAX *
+*******/
+
+img.loading
+{
+	max-width: 200px;
+}
+/******************
+* ADD ITEM POPUPS *
+******************/
+
+div.popup_casing
+{
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	background-color: rgba(255, 255, 0, 0.3);
+	text-align: center;
+	padding: 1em;
+	z-index: 1;
+}
+
+div.popup_casing:empty
+{
+	display: none;
+}
+
+div.popup_casing>div
+{
+	border: 2px solid black;
+	display: inline-block;
+	padding: 1em;
+	background-color: white;
+	border-radius: 2em;
+	overflow-y: auto;
+	max-height: calc(100vh - 4em);
+	min-height: 50%;
+	min-width: 33%;
+	max-width: 75vw;
+}
+
+div.popup_casing>span.popup_close
+{
+	background-color: red;
+	vertical-align: top;
+	padding: .25em;
+	cursor: pointer;
+	color: white;
+	right: 3em;
+	font-weight: bold;
+	position: relative;
+	border: white 2px solid;
+	border-radius: 1em;
+}
+
+div.popup_casing>div.popup_box p
+{
+	text-align: left;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 45em;
+	line-height: 120%;
+	text-indent: 2em;
+}
+
+div.popup_casing>div.popup_box h4
+{
+	border-bottom: 1px solid black;
+}
+
+/***************
+* AUTOCOMPLETE *
+***************/
+
+div.auto_complete_box
+{
+	position: absolute;
+	width: 10em;
+	border: 2px solid black;
+	border-radius: 0 .5em .5em;
+}
+
+div.auto_complete_box>span
+{
+	background-color: white;
+	text-align: center;
+	border-radius: calc(.5em - 2px);
+	border-top-left-radius: 0;
+}
+div.auto_complete_box>span img
+{
+	max-height: 2em;
+}
+
+
+div.auto_complete_box:empty
+{
+	display: none;
+}
+div.auto_complete_box a:first-child
+{
+	border-top-right-radius: calc(.5em - 2px);
+}
+div.auto_complete_box a:last-child
+{
+	border-bottom-left-radius: calc(.5em - 2px);
+	border-bottom-right-radius: calc(.5em - 2px);
+}
+
+div.auto_complete_box>*
+{
+	display: block;
+	padding: .25em .5em;
+	color: black !important;
+}
+div.auto_complete_box a:nth-child(odd)
+{
+	background-color: #ccc;
+}
+div.auto_complete_box a:nth-child(even)
+{
+	background-color: #777;
+}
+
+form ul li input.set
+{
+	background-color: #bfc;
+}
+
+div.auto_complete_box a:hover,
+div.auto_complete_box a#auto_complete_selected
+{
+	background: #444;
+}
+
+div.auto_complete_box a:active
+{
+	background: #222;
+	color: #999;
+}
+
+div.auto_complete_box a span
+{
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1em;
+}
+
+div.auto_complete_box a span.title
+{
+	font-weight: bold;
+}
+div.auto_complete_box a span.subtitle
+{
+	font-style: italic;
+}
+div.auto_complete_box a.add_message
+{
+	font-weight: bold;
+	text-align: center;
+}
+
+div.auto_complete_default
+{
+	display: none;
+}
+
+
+/*********
+* SEARCH *
+*********/
+form#ajax_search label::after
+{
+	content: ":";
+}
+
+div.page_nav
+{
+	margin-top: 1em;
+}
+
+div.page_nav a.selected_page
+{
+	color: black;
+	text-decoration: underline;
+	cursor: default;
+}
+
+div.page_nav a
+{
+	vertical-align: top;
+	display: inline-block;
+}
+
+div.page_nav a.forward_arrow,
+div.page_nav a.back_arrow
+{
+	font-size: 1.5em;
+	margin-top: -.25em;
+	text-decoration: none;
+}
+
+div.page_nav a.view_all
+{
+	display: block;
+	width: 4em;
+	margin: 0 auto;
+}
+
+div.page_nav a.invalid
+{
+	visibility: hidden;
+}

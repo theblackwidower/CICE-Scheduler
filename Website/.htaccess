@@ -1,0 +1,10 @@
+php_value display_errors Off
+php_value date.timezone America/Toronto
+php_value session.gc_maxlifetime 86400
+ErrorDocument 400 /cice/400.php
+ErrorDocument 401 /cice/401.php
+ErrorDocument 403 /cice/403.php
+ErrorDocument 404 /cice/404.php
+ErrorDocument 500 /cice/500.php
+ErrorDocument 503 /cice/503.php
+Options -Indexes

@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS tbl_facilitators CASCADE;
+
+CREATE TABLE tbl_facilitators(
+	email VARCHAR(255) PRIMARY KEY REFERENCES tbl_users (email) ON DELETE RESTRICT ON UPDATE CASCADE,
+	first_name VARCHAR(30) NOT NULL,
+	last_name VARCHAR(30) NOT NULL,
+	is_active BOOLEAN NOT NULL DEFAULT true
+);

@@ -1,0 +1,188 @@
+@import "forms.css";
+@import "lists.css";
+@import "schedule.css";
+@import "ajax.css";
+
+body
+{
+	width: 1000px;
+	margin: 1em auto;
+	background-color: #ff6;
+	border: 3px black solid;
+	overflow-y: scroll;
+	font-family: "Liberation Sans", sans-serif;
+}
+
+div#header
+{
+	height: 2.5em;
+	text-align: center;
+	padding: 1em 0 0;
+	font-size: 2.5em;
+	font-weight: bold;
+	border-bottom: 3px black solid;
+}
+
+div#main
+{
+	background-image: linear-gradient(to right,
+		#F50 calc(12em + .25em)/*width of sidebar plus margin*/,
+		black 0,
+		black calc(12em + .25em + 3px)/*width of sidebar plus margin plus border width*/,
+		#D3FF4B 0);
+}
+
+div#sidebar
+{
+	float: left;
+	width: 12em;
+	padding: 0.25em 0 0.5em 0.25em;
+	display: inline-block;
+}
+
+div#sidebar *
+{
+	display: block;
+	padding: .25em;
+	border: 2px solid #FF0;
+	border-right: 0;
+	border-radius: .8em 0 0 .8em;
+	color: #000;
+	margin-left: .5em;
+	margin-top: .25em;
+	text-align: right;
+	cursor: pointer;
+	font-weight: normal;
+}
+
+div#sidebar span:not(.current)
+{
+	font-weight: bold;
+}
+
+div#sidebar *:empty,
+div#sidebar span:not(.open) *
+{
+	display: none;
+}
+
+div#sidebar *:hover,
+div#sidebar span.open,
+div#sidebar span.current
+{
+	/*grows button*/
+	margin-left: 0;
+	padding-left: .75em;
+}
+
+div#sidebar span.current
+{
+	cursor: default;
+}
+
+div#sidebar>* *
+{
+	margin-right: -.25em;
+	/* second-level elements
+	compensate for inner padding. It'll now be flush to the right with everything above */
+}
+
+div#sidebar>*
+{
+	margin-right: 0;
+	background-color: #FFAF5C;
+}
+
+div#sidebar>*:hover,
+div#sidebar>span.open,
+div#sidebar>span.current
+{
+	background-color: #FFC800;
+}
+
+
+div#sidebar>span>*
+{
+	background-color: #FF9077;
+}
+
+div#sidebar>span>*:hover,
+div#sidebar>span>span.open,
+div#sidebar>span>span.current
+{
+	background-color: #FF2E2E;
+}
+
+div#sidebar>span>span>*
+{
+	background-color: #A7AEFF;
+}
+
+div#sidebar>span>span>*:hover,
+div#sidebar>span>span>span.open,
+div#sidebar>span>span>span.current
+{
+	background-color: #5C59FF;
+}
+
+div#content
+{
+	float: right;
+	display: inline-block;
+	width: calc(100% - 12em - .25em - 2em - 3px);
+	/* 100% - with of sidebar - sidebar margin - content padding - border width */
+	padding: 0 1em 1em;
+	text-align: center;
+}
+
+div#content h1#title
+{
+	text-align: center;
+	border-bottom: 1px solid;
+	padding-bottom: .2em;
+	margin-bottom: .4em;
+}
+
+div#content h2#message:empty
+{
+	display: none;
+}
+
+div#footer
+{
+	clear: both;
+	background-color: #FFD281;
+	padding: 0.5em;
+	border-top: 3px black solid;
+}
+div#footer a
+{
+	float: right;
+}
+
+a:link
+{
+	color: #0F5221;
+	text-decoration: none;
+}
+
+a:hover
+{
+	color: #8A1616;
+	text-decoration: underline;
+}
+
+a:active
+{
+	color: #B3B324;
+}
+
+.hidden
+{
+	display: none;
+}
+
+#content ul
+{
+	text-align: left;
+}

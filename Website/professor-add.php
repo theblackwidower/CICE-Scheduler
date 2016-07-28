@@ -1,0 +1,40 @@
+<?php
+include_once "modules/constants.php";
+$title = "Add Professor";
+$restrictionCode = ROLE_DATA_ENTRY;
+include "modules/header.php";
+
+if ($_SERVER["REQUEST_METHOD"] == "POST")
+{
+	require 'modules/processes/add-professor.php';
+
+	if ($result === true)
+	{
+		$result = "Professor <em>".format_name($first_name, $last_name, NAME_FORMAT_LAST_NAME_FIRST)."</em> successfully added.";
+		$first_name = "";
+		$last_name = "";
+		$email = "";
+	}
+	echo "<h2>".$result."</h2>";
+}
+else
+{
+	$first_name = "";
+	$last_name = "";
+	$email = "";
+}
+	form_open_post(); ?>
+		<ul>
+			<?php
+			form_text_box('first_name', 'First Name', $first_name);
+			form_text_box('last_name', 'Last Name', $last_name);
+			?>
+		</ul>
+		<ul>
+			<?php form_text_box('email', 'Email Address (optional)', $email); ?>
+		</ul>
+		<ul>
+			<?php form_submit_buttons(BTN_TYPE_CREATE); ?>
+		</ul>
+	</form>
+<?php include "modules/footer.php";
