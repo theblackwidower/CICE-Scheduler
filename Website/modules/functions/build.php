@@ -191,5 +191,5 @@ function email_password($email, $password)
 	$message .= "Please note, this password is case-sensitive. We suggest you immediately change your password to something more memorable as soon as possible.\r\n";
 	$message .= "Sincerely, Me.";
 
-	return mail($email_address, "Your New Account on the CICE Scheduler", $message, "From: no-reply@durhamcollege.ca\r\n" );
+	return mail($email, "Your New Account on the CICE Scheduler", $message, "From: no-reply@durhamcollege.ca\r\n" );
 }

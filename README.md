@@ -1,5 +1,7 @@
 # CICE Scheduler
 
+[![Code Climate](https://codeclimate.com/github/theblackwidower/CICE-Scheduler/badges/gpa.svg)](https://codeclimate.com/github/theblackwidower/CICE-Scheduler)
+
 This application is designed to store information on students, professors, and classes; all for the purpose of scheduling learning facilitators to assist the students during their classes.
 
 ## Licence
