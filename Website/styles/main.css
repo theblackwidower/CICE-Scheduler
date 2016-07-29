@@ -94,7 +94,6 @@ body
 	background-color: #FFC800;
 }
 
-
 #sidebar>span>*
 {
 	background-color: #FF9077;
@@ -148,6 +147,7 @@ body
 	padding: 0.5em;
 	border-top: 3px black solid;
 }
+
 #footer a
 {
 	float: right;

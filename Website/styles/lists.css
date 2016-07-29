@@ -1,14 +1,14 @@
-
 /********
 * LISTS *
 ********/
-#content ul.block_list
+#content .block_list
 {
 	list-style-type: none;
 	padding-left: 0;
 	text-align: center;
 }
-ul.block_list li
+
+.block_list li
 {
 	display: inline-block;
 	margin: 0 auto .5em;
@@ -16,12 +16,12 @@ ul.block_list li
 	white-space: nowrap;
 }
 
-ul.block_list li.spacer
+.block_list .spacer
 {
 	visibility: hidden;
 }
 
-ul.block_list li div
+.block_list li div
 {
 	width: 24em;
 	white-space: nowrap;
@@ -29,8 +29,8 @@ ul.block_list li div
 	text-overflow: ellipsis;
 }
 
-ul.block_list li div,
-ul.block_list li a
+.block_list li div,
+.block_list li a
 {
 	display: inline-block;
 	border: black solid 2px;
@@ -40,11 +40,12 @@ ul.block_list li a
 	border-radius: .125em;
 }
 
-ul.block_list li div.booked_facilitator
+.block_list li .booked_facilitator
 {
 	width: 18em;
 }
-ul.block_list li div.student_group
+
+.block_list li .student_group
 {
 	display: block;
 	width: 16em;
@@ -55,136 +56,145 @@ ul.block_list li div.student_group
 	padding-bottom: .2em;
 }
 
-ul.block_list li div.student_group span
+.block_list li .student_group span
 {
 	text-decoration: underline;
 	float: none;
 }
 
-ul.block_list li div span
+.block_list li div span
 {
 	display: block;
 	clear: both;
 	float: left;
 }
 
-ul.block_list li div span.time
+.block_list li div span.time
 {
 	clear: none;
 	float: right;
 	text-decoration: underline;
 }
-ul.block_list li div span.name,
-ul.block_list li div span.professor_name,
-ul.block_list li div span.course
+
+.block_list li div span.name,
+.block_list li div span.professor_name,
+.block_list li div span.course
 {
 	font-style: italic;
 }
 
-ul.block_list li div span.id,
-ul.block_list li div span.course_code,
-ul.block_list li div span.student,
-ul.block_list li div span.crn,
-ul.block_list li div span.email
+.block_list li div span.id,
+.block_list li div span.course_code,
+.block_list li div span.student,
+.block_list li div span.crn,
+.block_list li div span.email
 {
 	font-weight: bold;
 }
 
-ul.block_list li div span.role
+.block_list li div span.role
 {
 	text-decoration: underline;
 }
 
-ul.block_list li a
+.block_list li a
 {
 	margin-left: .5em;
 	color: black;
 	text-align: center;
 }
 
-
-ul.block_list li a.edit
+.block_list li a.edit
 {
 	background-color: #B8B8FF;
 }
-ul.block_list li a.email
+
+.block_list li a.email
 {
 	background-color: #FFA950;
 }
-ul.block_list li a.password
+
+.block_list li a.password
 {
 	background-color: #A3DDFF;
 }
-ul.block_list li a.schedule
+
+.block_list li a.schedule
 {
 	background-color: #82FD7A;
 }
-ul.block_list li a.add
+
+.block_list li a.add
 {
 	background-color: #FFA4A4;
 }
-ul.block_list li a.quick
+
+.block_list li a.quick
 {
 	background-color: #C6F536;
 }
 
-
-div.room_list
+.room_list
 {
 	display: inline-block;
 	width: 45%;
 	font-size: 1.17em;
 	font-weight: bold;
 }
-div.room_list ul
+
+.room_list ul
 {
 	font-size: .85em;
 	font-weight: normal;
 }
-div.room_list ul li
+
+.room_list ul li
 {
 	display: inline-block;
 	text-decoration: underline;
 	margin-right: .25em;
 }
 
-
-ul#registered_courses
+#registered_courses
 {
 	padding: 0 3em;
 }
-ul#registered_courses li
+
+#registered_courses li
 {
 	clear: both;
 }
 
-ul#registered_courses span,
-ul#registered_courses a
+#registered_courses span,
+#registered_courses a
 {
 	display: inline-block;
 }
 
-ul#registered_courses span.crn
+#registered_courses span.crn
 {
 	width: 4em;
 	font-style: italic;
 }
 
-ul#registered_courses span.course_code
+#registered_courses span.course_code
 {
 	width: 6em;
 	text-decoration: underline;
 }
-ul#registered_courses span.course_name
+
+#registered_courses span.course_name
 {
 	font-weight: bold;
 }
-ul#registered_courses span.professor,
-ul#registered_courses a
+
+#registered_courses span.professor,
+#registered_courses a
 {
 	float: right;
 }
-ul#registered_courses a
+
+#registered_courses a
 {
 	font-weight: bold;
 	margin-left: 1em;

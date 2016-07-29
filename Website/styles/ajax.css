@@ -1,7 +1,6 @@
 /**************
 * LOGIN POPUP *
 **************/
-
 #click_shield
 {
 	position: fixed;
@@ -14,6 +13,7 @@
 	text-align: center;
 	padding-top: 5em;
 }
+
 #login_popup
 {
 	border: 2px solid black;
@@ -22,19 +22,19 @@
 	background-color: white;
 	border-radius: 2em;
 }
+
 /*******
 * AJAX *
 *******/
-
-img.loading
+.loading
 {
 	max-width: 200px;
 }
+
 /******************
 * ADD ITEM POPUPS *
 ******************/
-
-div.popup_casing
+.popup_casing
 {
 	position: fixed;
 	top: 0;
@@ -48,12 +48,12 @@ div.popup_casing
 	z-index: 1;
 }
 
-div.popup_casing:empty
+.popup_casing:empty
 {
 	display: none;
 }
 
-div.popup_casing>div
+.popup_casing>div
 {
 	border: 2px solid black;
 	display: inline-block;
@@ -67,7 +67,7 @@ div.popup_casing>div
 	max-width: 75vw;
 }
 
-div.popup_casing>span.popup_close
+.popup_casing>.popup_close
 {
 	background-color: red;
 	vertical-align: top;
@@ -81,7 +81,7 @@ div.popup_casing>span.popup_close
 	border-radius: 1em;
 }
 
-div.popup_casing>div.popup_box p
+.popup_casing>.popup_box p
 {
 	text-align: left;
 	margin-left: auto;
@@ -91,7 +91,7 @@ div.popup_casing>div.popup_box p
 	text-indent: 2em;
 }
 
-div.popup_casing>div.popup_box h4
+.popup_casing>.popup_box h4
 {
 	border-bottom: 1px solid black;
 }
@@ -99,8 +99,7 @@ div.popup_casing>div.popup_box h4
 /***************
 * AUTOCOMPLETE *
 ***************/
-
-div.auto_complete_box
+.auto_complete_box
 {
 	position: absolute;
 	width: 10em;
@@ -108,44 +107,48 @@ div.auto_complete_box
 	border-radius: 0 .5em .5em;
 }
 
-div.auto_complete_box>span
+.auto_complete_box>span
 {
 	background-color: white;
 	text-align: center;
 	border-radius: calc(.5em - 2px);
 	border-top-left-radius: 0;
 }
-div.auto_complete_box>span img
+
+.auto_complete_box>span img
 {
 	max-height: 2em;
 }
 
-
-div.auto_complete_box:empty
+.auto_complete_box:empty
 {
 	display: none;
 }
-div.auto_complete_box a:first-child
+
+.auto_complete_box a:first-child
 {
 	border-top-right-radius: calc(.5em - 2px);
 }
-div.auto_complete_box a:last-child
+
+.auto_complete_box a:last-child
 {
 	border-bottom-left-radius: calc(.5em - 2px);
 	border-bottom-right-radius: calc(.5em - 2px);
 }
 
-div.auto_complete_box>*
+.auto_complete_box>*
 {
 	display: block;
 	padding: .25em .5em;
-	color: black !important;
+	color: black;
 }
-div.auto_complete_box a:nth-child(odd)
+
+.auto_complete_box a:nth-child(odd)
 {
 	background-color: #ccc;
 }
-div.auto_complete_box a:nth-child(even)
+
+.auto_complete_box a:nth-child(even)
 {
 	background-color: #777;
 }
@@ -155,19 +158,20 @@ form ul li input.set
 	background-color: #bfc;
 }
 
-div.auto_complete_box a:hover,
-div.auto_complete_box a#auto_complete_selected
+.auto_complete_box a:hover,
+.auto_complete_box #auto_complete_selected
 {
 	background: #444;
+	color: black;
 }
 
-div.auto_complete_box a:active
+.auto_complete_box a:active
 {
 	background: #222;
 	color: #999;
 }
 
-div.auto_complete_box a span
+.auto_complete_box a span
 {
 	display: block;
 	white-space: nowrap;
@@ -176,68 +180,69 @@ div.auto_complete_box a span
 	height: 1em;
 }
 
-div.auto_complete_box a span.title
+.auto_complete_box a .title
 {
 	font-weight: bold;
 }
-div.auto_complete_box a span.subtitle
+
+.auto_complete_box a .subtitle
 {
 	font-style: italic;
 }
-div.auto_complete_box a.add_message
+
+.auto_complete_box .add_message
 {
 	font-weight: bold;
 	text-align: center;
 }
 
-div.auto_complete_default
+.auto_complete_default
 {
 	display: none;
 }
 
-
 /*********
 * SEARCH *
 *********/
-form#ajax_search label::after
+#ajax_search label::after
 {
 	content: ":";
 }
 
-div.page_nav
+.page_nav
 {
 	margin-top: 1em;
 }
 
-div.page_nav a.selected_page
+.page_nav .selected_page
 {
 	color: black;
 	text-decoration: underline;
 	cursor: default;
 }
 
-div.page_nav a
+.page_nav a
 {
 	vertical-align: top;
 	display: inline-block;
 }
 
-div.page_nav a.forward_arrow,
-div.page_nav a.back_arrow
+.page_nav .forward_arrow,
+.page_nav .back_arrow
 {
 	font-size: 1.5em;
 	margin-top: -.25em;
 	text-decoration: none;
 }
 
-div.page_nav a.view_all
+.page_nav .view_all
 {
 	display: block;
 	width: 4em;
 	margin: 0 auto;
 }
 
-div.page_nav a.invalid
+.page_nav .invalid
 {
 	visibility: hidden;
 }

@@ -1,4 +1,3 @@
-
 /********
 * FORMS *
 ********/
@@ -46,6 +45,7 @@ form>ul>li>select[size]
 {
 	width: 100%;
 }
+
 form>ul>li>input[type="submit"],
 form>ul>li>input[type="reset"],
 form>ul>li>input[type="checkbox"]
@@ -58,14 +58,15 @@ form>ul>li ul
 	padding-left: 1em;
 	margin-top: 0.25em;
 }
+
 form>ul>li ul>li
 {
 	list-style-type: disc;
 }
+
 /********
 * ADMIN *
 ********/
-
 #admin_panel form
 {
 	width: calc(50% - 1em);
@@ -76,26 +77,31 @@ form>ul>li ul>li
 	padding: .25em;
 	margin-top: 0.25em;
 }
+
 #admin_panel form:nth-child(odd)
 {
 	float: left;
 	clear: left;
 }
+
 #admin_panel form:nth-child(even)
 {
 	float: right;
 	clear: right;
 }
+
 #admin_panel form h3
 {
 	margin-top: 0;
 	margin-bottom: .25em;
 }
+
 #admin_panel form div
 {
 	text-align: left;
 	display: inline-block;
 }
+
 #admin_panel form input[type="submit"]
 {
 	margin-top: .25em;

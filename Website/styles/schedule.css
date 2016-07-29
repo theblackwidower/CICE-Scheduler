@@ -1,4 +1,3 @@
-
 /***********
 * SCHEDULE *
 ***********/
@@ -28,6 +27,7 @@ table.schedule td:not(:first-child)>*
 {
 	display: block;
 }
+
 table.schedule td:not(:first-child)>*.students
 {
 	padding-left: 1em;
@@ -66,52 +66,53 @@ table.schedule td.new_item
 	color: #333;
 }
 
-ul.timetable_error li
+.timetable_error li
 {
 	padding-left: 1em;
 }
 
-ul.timetable_error li span.time
+.timetable_error li span.time
 {
 	display: block;
 	margin: .5em -1em .25em;
 }
 
-ul.timetable_error li span.time::after
+.timetable_error li span.time::after
 {
 	content: ":";
 }
 
-ul.timetable_error li span:not(:first-child)
+.timetable_error li span:not(:first-child)
 {
 	margin-right: .25ex;
 }
 
-ul.timetable_error li span.course_code
+.timetable_error li span.course_code
 {
 	font-weight: bold;
 }
 
-ul.timetable_error li span.course_rn
+.timetable_error li span.course_rn
 {
 	text-decoration: underline;
 }
 
-ul.timetable_error li span.room_number
+.timetable_error li span.room_number
 {
 	font-style: italic;
 }
 
-ul.timetable_error li span.campus_name
+.timetable_error li span.campus_name
 {
 	display: none;
 }
 
-ul.timetable_error li span.course_rn::before
+.timetable_error li span.course_rn::before
 {
 	content: "(";
 }
-ul.timetable_error li span.course_rn::after
+
+.timetable_error li span.course_rn::after
 {
 	content: ")";
 }
