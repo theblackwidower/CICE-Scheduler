@@ -22,27 +22,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		set_default_semester($_POST['semester']);
 		$message = "Semester now set to: ".get_default_semester();
 	}
-	else if ($section_id == MAINTENANCE)
-	{
-		if ($_POST['operation'] == FULL_VACUUM)
-		{
-			$stmt = $conn->prepare('VACUUM FULL');
-			$name = "Full vacuum";
-		}
-		else if ($_POST['operation'] == STANDARD_VACUUM)
-		{
-			$stmt = $conn->prepare('VACUUM ANALYSE');
-			$name = "Vacuum & analyse";
-		}
-
-		$timestamp = time();
-		$result = $stmt->execute();
-		$duration = time() - $timestamp;
-		if ($result)
-			$message = $name." Completed in ".(($duration < 1)?'<1':$duration)." ".(($duration < 2)?'second':'seconds').'.';
-		else
-			$message = "Unknown error occurred while vacuuming: ".$stmt->errorCode();
-	}
 	else if (ROLE_ADMIN == get_logged_in_role())
 	{
 		if ($section_id == ADD_SEMESTER)
@@ -116,6 +95,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 			if ($campus_id == "")
 				$message .= "Please enter a campus id.<br />";
+			else if (!ctype_alpha($campus_id))
+				$message .= "Campus id must be a letter.<br />";
 
 			if ($campus_name == "")
 				$message .= "Please enter a campus name.<br />";
@@ -133,6 +114,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 						$message = "Unknown error occured: ".$code;
 				}
 			}
+		}
+		else if ($section_id == MAINTENANCE)
+		{
+			if ($_POST['operation'] == FULL_VACUUM)
+			{
+				$stmt = $conn->prepare('VACUUM FULL');
+				$name = "Full vacuum";
+			}
+			else if ($_POST['operation'] == STANDARD_VACUUM)
+			{
+				$stmt = $conn->prepare('VACUUM ANALYSE');
+				$name = "Vacuum & analyse";
+			}
+
+			$timestamp = time();
+			$result = $stmt->execute();
+			$duration = time() - $timestamp;
+			if ($result)
+				$message = $name." Completed in ".(($duration < 1)?'<1':$duration)." ".(($duration < 2)?'second':'seconds').'.';
+			else
+				$message = "Unknown error occurred while vacuuming: ".$stmt->errorCode();
 		}
 	}
 
