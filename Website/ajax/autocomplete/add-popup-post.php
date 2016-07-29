@@ -11,28 +11,28 @@ $output["message"] = "";
 
 if ($output["field"] == 'professor')
 {
-	require '../modules/processes/add-professor.php';
+	require '../../modules/processes/add-professor.php';
 
 	$id = $professor_id;
 	$display_name = get_professor_name($professor_id, NAME_FORMAT_LAST_NAME_FIRST);
 }
 else if ($output["field"] == 'course')
 {
-	require '../modules/processes/add-course.php';
+	require '../../modules/processes/add-course.php';
 
-	$id = $new_course_code;
-	$display_name = $new_course_code;
+	$id = $course_code;
+	$display_name = $course_code;
 }
 else if ($output["field"] == 'room')
 {
-	require '../modules/processes/add-room.php';
+	require '../../modules/processes/add-room.php';
 
 	$id = $room_number;
 	$display_name = $room_number;
 }
 else if ($output["field"] == 'crn')
 {
-	require '../modules/processes/add-class.php';
+	require '../../modules/processes/add-class.php';
 
 	$id = $course_rn;
 	$display_name = $course_rn;
@@ -42,7 +42,7 @@ if ($result === true)
 {
 	$output["success"] = true;
 	$output["id"] = $id;
-	$output["display"] = $display_name
+	$output["display"] = $display_name;
 }
 else
 {
