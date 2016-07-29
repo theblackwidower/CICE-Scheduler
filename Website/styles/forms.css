@@ -74,7 +74,6 @@ form>ul>li ul>li
 	background-color: #AAA;
 	text-align: center;
 	padding: .25em;
-	vertical-align: top;
 	margin-top: 0.25em;
 }
 #admin_panel form:nth-child(odd)

@@ -10,6 +10,10 @@ Copyright (C) 2016: T Duke Perry (http://noprestige.com)
 		<title><?php echo $title; ?></title>
 		<!--link rel="icon" type="image/png" href="images/icon.png" /-->
 		<link rel="stylesheet" type="text/css" href="<?php echo SITE_FOLDER;?>styles/main.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo SITE_FOLDER;?>styles/ajax.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo SITE_FOLDER;?>styles/forms.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo SITE_FOLDER;?>styles/lists.css" />
+		<link rel="stylesheet" type="text/css" href="<?php echo SITE_FOLDER;?>styles/schedule.css" />
 		<script type="text/javascript" src="<?php echo SITE_FOLDER;?>scripts/main.js"></script>
 		<script type="text/javascript" src="<?php echo SITE_FOLDER;?>scripts/ajax-search.js"></script>
 		<script type="text/javascript" src="<?php echo SITE_FOLDER;?>scripts/ajax-popup.js"></script>

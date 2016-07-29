@@ -1,8 +1,3 @@
-@import "forms.css";
-@import "lists.css";
-@import "schedule.css";
-@import "ajax.css";
-
 body
 {
 	width: 1000px;
@@ -37,7 +32,6 @@ div#sidebar
 	float: left;
 	width: 12em;
 	padding: 0.25em 0 0.5em 0.25em;
-	display: inline-block;
 }
 
 div#sidebar *
@@ -128,7 +122,6 @@ div#sidebar>span>span>span.current
 div#content
 {
 	float: right;
-	display: inline-block;
 	width: calc(100% - 12em - .25em - 2em - 3px);
 	/* 100% - with of sidebar - sidebar margin - content padding - border width */
 	padding: 0 1em 1em;

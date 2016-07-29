@@ -9,6 +9,7 @@
 	left: 0;
 	height: 100vh;
 	width: 100vw;
+	background-color: rgb(128, 128, 128);
 	background-color: rgba(128, 128, 128, .75);
 	text-align: center;
 	padding-top: 5em;
@@ -40,6 +41,7 @@ div.popup_casing
 	left: 0;
 	height: 100vh;
 	width: 100vw;
+	background-color: transparent;
 	background-color: rgba(255, 255, 0, 0.3);
 	text-align: center;
 	padding: 1em;
