@@ -117,17 +117,17 @@ function control_time(read_only)
 
 	if (start_time === read_only)
 	{
-		if (parseInt(end_time.value) <= parseInt(start_time.value))
-			end_time.value = parseInt(start_time.value) + 1;
-		else if ((parseInt(end_time.value) - parseInt(start_time.value)) > MAX_CLASS_LENGTH)
-			end_time.value = parseInt(start_time.value) + MAX_CLASS_LENGTH;
+		if (parseInt(end_time.value, 10) <= parseInt(start_time.value, 10))
+			end_time.value = parseInt(start_time.value, 10) + 1;
+		else if ((parseInt(end_time.value, 10) - parseInt(start_time.value, 10)) > MAX_CLASS_LENGTH)
+			end_time.value = parseInt(start_time.value, 10) + MAX_CLASS_LENGTH;
 	}
 	else if (end_time === read_only)
 	{
-		if (parseInt(end_time.value) <= parseInt(start_time.value))
-			start_time.value = parseInt(end_time.value) - 1;
-		else if ((parseInt(end_time.value) - parseInt(start_time.value)) > MAX_CLASS_LENGTH)
-			start_time.value = parseInt(end_time.value) - MAX_CLASS_LENGTH;
+		if (parseInt(end_time.value, 10) <= parseInt(start_time.value, 10))
+			start_time.value = parseInt(end_time.value, 10) - 1;
+		else if ((parseInt(end_time.value, 10) - parseInt(start_time.value, 10)) > MAX_CLASS_LENGTH)
+			start_time.value = parseInt(end_time.value, 10) - MAX_CLASS_LENGTH;
 	}
 }
 
