@@ -42,8 +42,8 @@ else
 	}
 	else
 	{
-		set_session_message("Please select a student.");
-		redirect("student-list.php");
+		set_session_message("Please select a user.");
+		redirect("user-list.php");
 	}
 }
 	form_open_post(); ?>
