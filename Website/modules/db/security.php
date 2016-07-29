@@ -25,16 +25,12 @@ function login($email, $password)
 	{
 		setcookie("email", $email, time() + COOKIE_EXPIRY);
 		$_SESSION['login'] = Array('email' => $email, 'role_id' => $data->role_id);
+		$_SESSION['password_change'] = $data->force_new_password;
+
 		if ($data->force_new_password)
-		{
-			$_SESSION['password_change'] = true;
 			return 2;
-		}
 		else
-		{
-			$_SESSION['password_change'] = false;
 			return 1;
-		}
 	}
 }
 

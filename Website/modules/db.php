@@ -98,13 +98,13 @@ return proper name of subject of record
 function execute_fetch_name($stmt, $name_format)
 {
 	$stmt->execute();
-	if ($stmt->rowcount() < 1)
-		return false;
-	else
+	if ($stmt->rowcount() > 0)
 	{
 		$person = $stmt->fetch(PDO::FETCH_OBJ);
 		return format_name($person->first_name, $person->last_name, $name_format);
 	}
+	else
+		return false;
 }
 
 /*

@@ -9,9 +9,7 @@ Displays the results of a search, either AJAX or on page load. Includes paginati
 */
 function display_search_results($id, $results, $extra_info = null)
 {
-	if (sizeof($results) <= 0)
-		echo '<h2>No Records Found</h2>';
-	else
+	if (sizeof($results) > 0)
 	{
 		$page_count = ceil(count($results) / MAX_RESULTS_PER_PAGE);
 
@@ -87,6 +85,8 @@ function display_search_results($id, $results, $extra_info = null)
 
 		echo $page_nav;
 	}
+	else
+		echo '<h2>No Records Found</h2>';
 }
 
 /*
