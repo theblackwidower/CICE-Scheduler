@@ -10,7 +10,7 @@ Will open the selected category
 function sidebar_click(event)
 {
 	//check if it's the menu item, or its contents
-	if (event.target == event.currentTarget)
+	if (event.target === event.currentTarget)
 		event.currentTarget.classList.toggle('open');
 }
 
@@ -44,15 +44,15 @@ function reset_form(form)
 		var hiddenItem;
 		for (var j = 0; j < fields.length; j++)
 		{
-			if (fields[j].type == 'text')
+			if (fields[j].type === 'text')
 				entryBox = fields[j];
-			else if (fields[j].type == 'hidden')
+			else if (fields[j].type === 'hidden')
 				hiddenItem = fields[j];
 		}
 
 		var defaultValue = casings[i].getElementsByClassName('auto_complete_default')[0].innerHTML;
 
-		if (defaultValue == '')
+		if (defaultValue === '')
 		{
 			entryBox.classList.remove('set');
 			entryBox.value = '';
@@ -90,12 +90,12 @@ Will automatically generate the default month and year for the semester from the
 */
 function default_semester(source)
 {
-	if (source.value.substr(0,1).toUpperCase() == 'F')
+	if (source.value.substr(0,1).toUpperCase() === 'F')
 	{
 		document.getElementById('start_month').value = "09";
 		document.getElementById('end_month').value = "12";
 	}
-	else if (source.value.substr(0,1).toUpperCase() == 'W')
+	else if (source.value.substr(0,1).toUpperCase() === 'W')
 	{
 		document.getElementById('start_month').value = "01";
 		document.getElementById('end_month').value = "04";
@@ -115,14 +115,14 @@ function control_time(read_only)
 	var start_time = document.getElementById('start_time');
 	var end_time = document.getElementById('end_time');
 
-	if (start_time == read_only)
+	if (start_time === read_only)
 	{
 		if (parseInt(end_time.value) <= parseInt(start_time.value))
 			end_time.value = parseInt(start_time.value) + 1;
 		else if ((parseInt(end_time.value) - parseInt(start_time.value)) > MAX_CLASS_LENGTH)
 			end_time.value = parseInt(start_time.value) + MAX_CLASS_LENGTH;
 	}
-	else if (end_time == read_only)
+	else if (end_time === read_only)
 	{
 		if (parseInt(end_time.value) <= parseInt(start_time.value))
 			start_time.value = parseInt(end_time.value) - 1;

@@ -16,7 +16,7 @@ function ajax_submit(form)
 
 	ajaxRequest.onreadystatechange = function()
 	{
-		if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200)
+		if(ajaxRequest.readyState === 4 && ajaxRequest.status === 200)
 		{
 			var response = ajaxRequest.response;
 			if (response.success)
@@ -32,9 +32,9 @@ function ajax_submit(form)
 				var fields = document.getElementById(response.field + "_auto_complete_casing").getElementsByTagName('input');
 				for (var i = 0; i < fields.length; i++)
 				{
-					if (fields[i].type == 'hidden')
+					if (fields[i].type === 'hidden')
 						fields[i].value = response.id;
-					else if (fields[i].type == 'text')
+					else if (fields[i].type === 'text')
 					{
 						fields[i].value = response.display;
 						fields[i].classList.add('set');
@@ -71,7 +71,7 @@ Closes popup box, confirming that it only closes when the casing is cliked, not 
 */
 function close_popup(casing, event)
 {
-	if (event.target == event.currentTarget)
+	if (event.target === event.currentTarget)
 		casing.innerHTML = "";
 }
 
@@ -102,7 +102,7 @@ function new_popup(id, data)
 
 	ajaxRequest.onreadystatechange = function()
 	{
-		if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200)
+		if(ajaxRequest.readyState === 4 && ajaxRequest.status === 200)
 		{
 			popupBox.innerHTML = ajaxRequest.responseText;
 			var contents = casing.getElementsByTagName('input');

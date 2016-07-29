@@ -18,7 +18,7 @@ function ajax_search(searchBox, name)
 
 	ajaxRequest.onreadystatechange = function()
 	{
-		if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200)
+		if(ajaxRequest.readyState === 4 && ajaxRequest.status === 200)
 			list.innerHTML = ajaxRequest.responseText;
 	}
 
@@ -36,14 +36,14 @@ function search_page(pageNumber, resultsBox)
 {
 	var currentPage = resultsBox.getElementsByClassName('page_' + pageNumber)[0];
 	//checks if page exists
-	if (currentPage != null)
+	if (currentPage !== null)
 	{
 		var pages = resultsBox.getElementsByClassName('block_list');
 
 		//displays selected page and hides all others
 		for (var i = 0; i < pages.length; i++)
 		{
-			if (pages[i] == currentPage)
+			if (pages[i] === currentPage)
 				pages[i].classList.remove('hidden');
 			else
 				pages[i].classList.add('hidden');
@@ -59,7 +59,7 @@ function search_page(pageNumber, resultsBox)
 			//disables any buttons on the nav bar that need to be disabled
 			for (var j = 0; j < pageLink.length; j++)
 			{
-				if ((j + 1) == pageNumber)
+				if ((j + 1) === pageNumber)
 					pageLink[j].classList.add('selected_page');
 				else
 					pageLink[j].classList.remove('selected_page');
@@ -75,7 +75,7 @@ function search_page(pageNumber, resultsBox)
 				pageNav[i].getElementsByClassName('back_arrow')[0].classList.add('invalid');
 
 			//check if it's the last page
-			if (resultsBox.getElementsByClassName('page_' + (pageNumber + 1))[0] != null)
+			if (resultsBox.getElementsByClassName('page_' + (pageNumber + 1))[0] !== undefined)
 				pageNav[i].getElementsByClassName('forward_arrow')[0].classList.remove('invalid');
 			else
 				pageNav[i].getElementsByClassName('forward_arrow')[0].classList.add('invalid');

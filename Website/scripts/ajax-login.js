@@ -18,7 +18,7 @@ function check_login()
 
 		ajaxRequest.onreadystatechange = function()
 		{
-			if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200)
+			if(ajaxRequest.readyState === 4 && ajaxRequest.status === 200)
 			{
 				if (!ajaxRequest.response.is_logged_in)
 					login_popup();
@@ -58,7 +58,7 @@ function login_popup()
 
 	ajaxRequest.onreadystatechange = function()
 	{
-		if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200)
+		if(ajaxRequest.readyState === 4 && ajaxRequest.status === 200)
 			loginPopup.innerHTML = ajaxRequest.responseText;
 	}
 
@@ -83,7 +83,7 @@ function ajax_login(form)
 
 	ajaxRequest.onreadystatechange = function()
 	{
-		if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200)
+		if(ajaxRequest.readyState === 4 && ajaxRequest.status === 200)
 		{
 			var response = ajaxRequest.response;
 			if (response.login_successful)

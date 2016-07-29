@@ -21,7 +21,7 @@ function auto_complete(source, field)
 
 	ajaxRequest.onreadystatechange = function()
 	{
-		if(ajaxRequest.readyState == 4 && ajaxRequest.status == 200)
+		if(ajaxRequest.readyState === 4 && ajaxRequest.status === 200)
 			autoCompleteBox.innerHTML = ajaxRequest.responseText;
 	}
 
@@ -41,9 +41,9 @@ function complete(source, id)
 	var fields = source.parentNode.parentNode.getElementsByTagName('input');
 	for (var i = 0; i < fields.length; i++)
 	{
-		if (fields[i].type == 'hidden')
+		if (fields[i].type === 'hidden')
 			fields[i].value = id;
-		else if (fields[i].type == 'text')
+		else if (fields[i].type === 'text')
 		{
 			fields[i].value = display;
 			fields[i].classList.add('set');
@@ -83,7 +83,7 @@ function clear_hidden(source)
 	var fields = source.parentNode.getElementsByTagName('input');
 	for (var i = 0; i < fields.length; i++)
 	{
-		if (fields[i].type == 'hidden')
+		if (fields[i].type === 'hidden')
 			fields[i].value = '';
 	}
 	source.classList.remove('set');
@@ -102,8 +102,8 @@ function auto_complete_keyboard_controls(event)
 	var autoCompleteBox = event.currentTarget.parentNode.getElementsByClassName('auto_complete_box')[0];
 	var selected = document.getElementById('auto_complete_selected');
 	var success = true;
-	if (event.key == "Tab" || event.keyCode == 9 ||
-			event.key == "Enter" || event.keyCode == 13)
+	if (event.key === "Tab" || event.keyCode === 9 ||
+			event.key === "Enter" || event.keyCode === 13)
 	{
 		//activate selected item
 		if (autoCompleteBox.contains(selected))
@@ -115,9 +115,9 @@ function auto_complete_keyboard_controls(event)
 		{
 			for (var i = formItems.length - 1; i >= 0; i--)
 			{
-				if (formItems[i] == event.currentTarget)
+				if (formItems[i] === event.currentTarget)
 					foundThis = true;
-				else if (foundThis && formItems[i].type != 'hidden')
+				else if (foundThis && formItems[i].type !== 'hidden')
 				{
 					formItems[i].focus();
 					break;
@@ -129,9 +129,9 @@ function auto_complete_keyboard_controls(event)
 		{
 			for (var i = 0; i < formItems.length; i++)
 			{
-				if (formItems[i] == event.currentTarget)
+				if (formItems[i] === event.currentTarget)
 					foundThis = true;
-				else if (foundThis && formItems[i].type != 'hidden')
+				else if (foundThis && formItems[i].type !== 'hidden')
 				{
 					formItems[i].focus();
 					break;
@@ -139,30 +139,30 @@ function auto_complete_keyboard_controls(event)
 			}
 		}
 	}
-	else if (event.key == "Up" || event.key == "ArrowUp" || event.keyCode == 38)
+	else if (event.key === "Up" || event.key === "ArrowUp" || event.keyCode === 38)
 	{
 		if (autoCompleteBox.contains(selected))
 		{
 			selected.id = "";
-			if (autoCompleteBox.firstElementChild == selected)
+			if (autoCompleteBox.firstElementChild === selected)
 				autoCompleteBox.lastElementChild.id = "auto_complete_selected";
 			else
 				selected.previousElementSibling.id = "auto_complete_selected";
 		}
-		else if (autoCompleteBox.innerHTML != "")
+		else if (autoCompleteBox.innerHTML !== "")
 			autoCompleteBox.lastElementChild.id = "auto_complete_selected";
 	}
-	else if (event.key == "Down" || event.key == "ArrowDown" || event.keyCode == 40)
+	else if (event.key === "Down" || event.key === "ArrowDown" || event.keyCode === 40)
 	{
 		if (autoCompleteBox.contains(selected))
 		{
 			selected.id = "";
-			if (autoCompleteBox.lastElementChild == selected)
+			if (autoCompleteBox.lastElementChild === selected)
 				autoCompleteBox.firstElementChild.id = "auto_complete_selected";
 			else
 				selected.nextElementSibling.id = "auto_complete_selected";
 		}
-		else if (autoCompleteBox.innerHTML != "")
+		else if (autoCompleteBox.innerHTML !== "")
 			autoCompleteBox.firstElementChild.id = "auto_complete_selected";
 	}
 	else
