@@ -26,8 +26,8 @@ function reset_form(form)
 	casings = form.getElementsByClassName('text_box_casing');
 	for (var i = 0; i < casings.length; i++)
 	{
-		var box = casings[i].getElementsByTagName('input')[0];
-		box.value = box.defaultValue;
+		var textBox = casings[i].getElementsByTagName('input')[0];
+		textBox.value = textBox.defaultValue;
 	}
 
 	casings = form.getElementsByClassName('password_box_casing');
@@ -78,8 +78,8 @@ function reset_form(form)
 	casings = form.getElementsByClassName('checkbox_casing');
 	for (var i = 0; i < casings.length; i++)
 	{
-		var box = casings[i].getElementsByTagName('input')[0];
-		box.checked = box.defaultChecked;
+		var checkBox = casings[i].getElementsByTagName('input')[0];
+		checkBox.checked = checkBox.defaultChecked;
 	}
 }
 
