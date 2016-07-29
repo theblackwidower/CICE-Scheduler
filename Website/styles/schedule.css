@@ -41,12 +41,12 @@ table.schedule td:not(:first-child)>a
 	font-size: small;
 }
 
-table.schedule td:first-child,
-table.schedule th:first-child
+table.schedule tr td:first-child,
+table.schedule tr th:first-child
 {
-	min-width: 4.5em !important;
+	min-width: 4.5em;
 	text-decoration: underline;
-	text-align: right !important;
+	text-align: right;
 	/*83x54*/
 }
 
@@ -55,14 +55,14 @@ table.schedule tr:last-child td
 	text-align: left;
 }
 
-table.schedule td:empty
+table.schedule tr td:empty
 {
-	background-color: #E2E2E2 !important;
+	background-color: #E2E2E2;
 }
 
-table.schedule td.new_item
+table.schedule tr td.new_item
 {
-	background-color: #ff7 !important;
+	background-color: #ff7;
 	color: #333;
 }
 
