@@ -7,19 +7,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	require 'modules/processes/login.php';
 
-	if ($result === true)
+	if ($result === 'logged in')
 	{
 		if (get_logged_in_role() == ROLE_ADMIN || get_logged_in_role() == ROLE_DATA_ENTRY)
 			redirect("administration.php");
 		else if (get_logged_in_role() == ROLE_FACILITATOR)
 			redirect("facilitator-schedule.php");
-		else if (get_logged_in_role() == ROLE_NEW_PASSWORD)
-		{
-			set_session_message("Your password has been recently reset.<br />Please change it to something more familiar.");
-			redirect("user-change-password.php");
-		}
 		else
 			redirect("index.php");
+	}
+	else if ($result === 'change password')
+	{
+		set_session_message("Your password has been recently reset.<br />Please change it to something more familiar.");
+		redirect("user-change-password.php");
 	}
 	echo "<h2>".$result."</h2>";
 }

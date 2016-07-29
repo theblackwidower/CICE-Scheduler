@@ -86,7 +86,7 @@ Copyright (C) 2016: T Duke Perry (http://noprestige.com)
 						$sidebar['Administration'] = 'administration.php';
 					}
 				}
-				echo build_sidebar($sidebar, basename($_SERVER['PHP_SELF']))['output'];
+				echo build_sidebar($sidebar, $this_file)['output'];
 				?>
 			</div>
 			<div id="content">

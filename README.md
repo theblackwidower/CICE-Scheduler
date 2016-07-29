@@ -16,6 +16,17 @@ This application is to be run on an Apache Server, running PHP, with a PostgreSQ
 
 To install, create a main user account and database in PostgreSQL, as well as a separate user account called 'apache' for the database backup function.
 
+You can adapt this SQL script to get started.
+
+```
+CREATE ROLE cice LOGIN
+	UNENCRYPTED PASSWORD 'password';
+CREATE DATABASE "CICE_Scheduler"
+	WITH OWNER = cice;
+
+CREATE ROLE apache LOGIN;
+```
+
 Run all eight SQL scripts in the SQL folder, one at a time.
 
 Add the contents of the Website folder to the Apache server's web folder. It can be installed in either the root, or in a subfolder.
@@ -24,6 +35,6 @@ Open modules/constants.php and change the SITE_FOLDER constant to match whatever
 
 Open modules/dblogin.php and edit the data within to match the PostgreSQL database settings, and user information.
 
-Open the application on your web browser and click on "Login". The default admin username and password is 'admin' and 'password'. Once logged in, immediately click on "Account", and "Change Password". Change the password to something memorable and unique. Do this immediately to prevent security breaches.
+Open the application on your web browser and click on "Login". The default admin username and password is 'admin' and 'password'. Once logged in, you will be immediately asked to change your password. This is required. Change the password to something memorable and unique.
 
 After this, the application has been successfully installed.

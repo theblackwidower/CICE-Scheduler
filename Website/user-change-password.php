@@ -10,9 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	$confirm_password = trim($_POST["confirm_password"]);
 	$email = get_logged_in_email();
 
-	if (get_logged_in_role() != ROLE_NEW_PASSWORD && $old_password == "")
+	if (!require_password_change() && $old_password == "")
 		$result = "Please enter your current password.";
-	else if (get_logged_in_role() != ROLE_NEW_PASSWORD && !login($email, $old_password))
+	else if (!require_password_change() && login($email, $old_password) == 0)
 		$result = "Your current password is invalid.";
 	else if ($new_password == "")
 		$result = "Please enter a new password.";
@@ -25,10 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$code = set_password($email, $new_password);
 		if ($code === true)
 		{
-			if (get_logged_in_role() == ROLE_NEW_PASSWORD)
+			if (require_password_change())
 			{
-				change_user_role($email, ROLE_FACILITATOR);
-				if (login($email, $new_password))
+				set_password_change_force($email, 'false');
+				if (login($email, $new_password) == 1)
 				{
 					set_session_message("Password successfully updated.");
 					redirect("facilitator-schedule.php");
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 }
 	form_open_post(); ?>
 		<?php
-		if (get_logged_in_role() != ROLE_NEW_PASSWORD)
+		if (!require_password_change())
 		{
 		echo '<ul>';
 			form_password_box('old_password', 'Current Password');

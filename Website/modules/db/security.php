@@ -3,26 +3,38 @@
 login:
 email: user's email address.
 password: password provided by user attempting to login
-for logging into application. Returns true on sucessful login.
+for logging into application.
+Returns 0 on failed login.
+Returns 1 on sucessful login or disabled account.
+Returns 2 on sucessful login and password change required.
 */
 function login($email, $password)
 {
 	global $conn;
-	$stmt = $conn->prepare('SELECT password, role_id FROM tbl_users WHERE :email = email');
+	$stmt = $conn->prepare('SELECT password, role_id, force_new_password FROM tbl_users WHERE :email = email');
 	$stmt->bindValue(':email', $email);
 	$data = execute_fetch_obj($stmt);
 	if ($data === false || !password_verify($password, $data->password))
-		return false;
+		return 0;
 	else if ($data->role_id == ROLE_DISABLED)
 	{
 		set_session_message("Your account has been disabled.");
-		return true;
+		return 1;
 	}
 	else
 	{
 		setcookie("email", $email, time() + COOKIE_EXPIRY);
 		$_SESSION['login'] = Array('email' => $email, 'role_id' => $data->role_id);
-		return true;
+		if ($data->force_new_password)
+		{
+			$_SESSION['password_change'] = true;
+			return 2;
+		}
+		else
+		{
+			$_SESSION['password_change'] = false;
+			return 1;
+		}
 	}
 }
 
@@ -38,6 +50,22 @@ function set_password($email, $password)
 	$stmt = $conn->prepare('UPDATE tbl_users SET password = :password WHERE email = :email');
 	$stmt->bindValue(':email', $email);
 	$stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
+	return execute_no_data($stmt);
+}
+
+/*
+set_password_change_force:
+email: user's email address.
+requirement: whether user needs to change their password at next login.
+for forcing user to change password of login account, or record that password was changed.
+Returns true if successful.
+*/
+function set_password_change_force($email, $requirement)
+{
+	global $conn;
+	$stmt = $conn->prepare('UPDATE tbl_users SET force_new_password = :requirement WHERE email = :email');
+	$stmt->bindValue(':email', $email);
+	$stmt->bindValue(':requirement', $requirement);
 	return execute_no_data($stmt);
 }
 
@@ -139,14 +167,15 @@ role_id: user's role
 adds new user to database
 returns true if successful
 */
-function add_user_account($email, $password, $role_id)
+function add_user_account($email, $password, $role_id, $force_new_password = 'true')
 {
 	global $conn;
-	$stmt = $conn->prepare('INSERT INTO tbl_users (email, password, role_id)
-			VALUES (:email, :password, :role)');
+	$stmt = $conn->prepare('INSERT INTO tbl_users (email, password, role_id, force_new_password)
+			VALUES (:email, :password, :role, :force_new_password)');
 	$stmt->bindValue(':email', $email);
 	$stmt->bindValue(':password', password_hash($password, PASSWORD_DEFAULT));
 	$stmt->bindValue(':role', $role_id);
+	$stmt->bindValue(':force_new_password', $force_new_password);
 	return execute_no_data($stmt);
 }
 

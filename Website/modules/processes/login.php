@@ -6,7 +6,14 @@ if ($email == "")
 	$result = "Please enter an email.";
 else if ($password == "")
 	$result = "Please enter a password.";
-else if (!login($email, $password))
-	$result = "Invalid login or password.";
 else
-	$result = true;
+{
+	$login_result = login($email, $password);
+	if ($login_result === 0)
+		$result = "Invalid login or password.";
+	else if ($login_result === 1)
+		$result = 'logged in';
+	else if ($login_result === 2)
+		//Change password
+		$result = 'change password';
+}

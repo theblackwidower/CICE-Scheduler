@@ -11,5 +11,6 @@ CREATE TABLE tbl_role(
 CREATE TABLE tbl_users(
 	email VARCHAR(255) PRIMARY KEY,
 	password VARCHAR(255) NOT NULL,
-	role_id CHAR(1) NOT NULL REFERENCES tbl_role (role_id)
+	role_id CHAR(1) NOT NULL REFERENCES tbl_role (role_id),
+	force_new_password BOOLEAN NOT NULL DEFAULT true
 );

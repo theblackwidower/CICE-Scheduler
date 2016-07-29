@@ -38,5 +38,17 @@ if ($access_denied)
 	exit;
 }
 
+$this_file = basename($_SERVER['PHP_SELF']);
+
+if (require_password_change() &&
+		//pages allowed to access before changing password.
+		$this_file != 'login.php' &&
+		$this_file != 'index.php' &&
+		$this_file != 'user-change-password.php')
+{
+	set_session_message("Your password has been recently reset.<br />Please change it to something more familiar.");
+	redirect("user-change-password.php");
+}
+
 require_once "db.php";
 ob_start();

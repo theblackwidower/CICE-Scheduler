@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		else
 		{
 			$password = default_password($first_name, $last_name);
-			$code = add_user_account($email, $password, ROLE_NEW_PASSWORD);
+			$code = add_user_account($email, $password, ROLE_FACILITATOR, 'true');
 			if ($code === true)
 			{
 				$result .= "User account created with temporary password";

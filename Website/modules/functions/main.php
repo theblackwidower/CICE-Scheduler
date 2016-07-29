@@ -45,6 +45,19 @@ function get_logged_in_role()
 		return PUBLIC_ACCESS;
 }
 
+
+/*
+require_password_change:
+Return true if logged in user needs to change their password
+*/
+function require_password_change()
+{
+	if (is_logged_in())
+		return $_SESSION['password_change'];
+	else
+		return false;
+}
+
 /*
 default_password:
 first_name: user's first name

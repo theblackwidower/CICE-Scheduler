@@ -22,7 +22,6 @@ define("PUBLIC_ACCESS", 'P');
 define("ROLE_ADMIN", 'A');
 define("ROLE_DATA_ENTRY", 'E');
 define("ROLE_FACILITATOR", 'F');
-define("ROLE_NEW_PASSWORD", 'N');
 define("ROLE_DISABLED", 'D');
 
 define("MIN_PASSWORD_LENGTH", 8);

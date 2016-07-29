@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			$result = ".<br />Password has been emailed to user.";
 		else
 			$result .= ": <em>".$new_password."</em>";
-		change_user_role($email, ROLE_NEW_PASSWORD);
+		set_password_change_force($email, 'true');
 		set_session_message($result);
 		redirect("user-list.php");
 	}
@@ -63,8 +63,7 @@ else
 	<h3>
 		Are you sure you want to reset this user's password?<br />
 		Their password will be changed to a random sequence,<br />
-		and they will be forced to change it at next login.<br />
-		After which, their account will be automatically reverted to the Facilitator role.
+		and they will be forced to change it at next login.
 	</h3>
 	<?php form_open_post(); ?>
 		<ul>

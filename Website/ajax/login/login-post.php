@@ -10,8 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 	$output = Array();
 
-	if ($result === true)
+	if ($result === 'logged in')
 		$output["login_successful"] = true;
+	else if ($result === 'change password')
+		$output["message"] = 'Your password needs to be changed.<br />
+			<a href="'.SITE_FOLDER.'user-change-password.php" target="_blank">Click here to change your password.</a>';
+		$output["login_successful"] = false;
 	else
 	{
 		$output["message"] = $result;

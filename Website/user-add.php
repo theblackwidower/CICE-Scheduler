@@ -8,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
 	$email = trim($_POST["email"]);
 	$role_id = trim($_POST["role_id"]);
+	$force_new_password = isset($_POST["force_new_password"])?'true':'false';
 	$password = trim($_POST["password"]);
 	$confirm_password = trim($_POST["confirm_password"]);
 	$random_password = false;
@@ -26,7 +27,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	else if (strlen($password) < MIN_PASSWORD_LENGTH)
 		$result .= "Password must have at least ".MIN_PASSWORD_LENGTH." characters.";
 
-
 	if ($result == "")
 	{
 		if (user_exists($email))
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			if ($random_password)
 				$password = random_password();
 
-			$code = add_user_account($email, $password, $role_id);
+			$code = add_user_account($email, $password, $role_id, $force_new_password);
 			if ($code === true)
 			{
 				$result = "User <em>".$email."</em> successfully created";
@@ -64,6 +64,7 @@ else
 {
 	$email = '';
 	$role_id = ROLE_DATA_ENTRY;
+	$force_new_password = 'true';
 }
 	form_open_post(); ?>
 		<ul>
@@ -71,6 +72,7 @@ else
 		</ul>
 		<ul>
 			<?php form_drop_down_box('role_id', 'User Role', $role_id); ?>
+			<?php form_checkbox('force_new_password', 'Force Password Change', $force_new_password); ?>
 		</ul>
 		<ul>
 			<?php form_password_box('password', 'Password<br />(leave blank for a random password)'); ?>
