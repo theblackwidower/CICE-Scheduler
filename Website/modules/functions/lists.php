@@ -54,9 +54,9 @@ function display_search_results($id, $results, $extra_info = null)
 			else if ($id == 'classes')
 				echo display_class_li($results[$i]);
 			else if ($id == 'scheduling')
-				echo display_class_for_scheduling_li($results[$i]);
+				echo display_class_for_scheduling_li($results[$i], false);
 			else if ($id == 'new-scheduling')
-				echo display_class_for_new_scheduling_li($results[$i]);
+				echo display_class_for_scheduling_li($results[$i], true);
 			else if ($id == 'booked-facilitators-scheduling')
 				echo display_booked_facilitators_li($results[$i]['facilitator'], $extra_info['semester_id'],
 					$extra_info['course_rn'], $extra_info['day_id'], $extra_info['start_time']);
@@ -280,12 +280,13 @@ function display_autocomplete_item($item, $value_id, $title_id, $subtitle_id)
 /*
 display_class_for_scheduling_li:
 block: All info for class block
+is_new: Boolean, should the Quick Schedule button be displayed?
 Display class info for scheduling facilitators.
 */
-function display_class_for_scheduling_li($block)
+function display_class_for_scheduling_li($block, $is_new)
 {
 	$course = get_course_from_crn($block['course_rn'], get_default_semester());
-	return '
+	$return = '
 	<li>
 		<div>
 			<span class="crn">'.$block['course_rn'].'</span>
@@ -297,38 +298,15 @@ function display_class_for_scheduling_li($block)
 		<a class="edit" href="schedule-class.php?crn='.urlencode($block['course_rn']).
 				'&day='.urlencode($block['day_id']).'&time='.urlencode($block['start_time']).'">
 			Schedule<br />Facilitators
-		</a>
-	</li>';
-}
-
-/*
-display_class_for_new_scheduling_li:
-block: All info for class block
-Display class info for scheduling facilitators. With quick schedule button.
-*/
-function display_class_for_new_scheduling_li($block)
-{
-	$course = get_course_from_crn($block['course_rn'], get_default_semester());
-	return '
-	<li>
-		<div>
-			<span class="crn">'.$block['course_rn'].'</span>
-			<span class="time">
-				'.get_day_name($block['day_id']).' at '.format_time($block['start_time']).'
-			</span>
-			<span class="course">'.$course['course_code'].' - '.$course['course_name'].'</span>
-		</div>
-		<a class="edit" href="schedule-class.php?crn='.urlencode($block['course_rn']).
-				'&day='.urlencode($block['day_id']).'&time='.urlencode($block['start_time']).'">
-			Schedule<br />Facilitators
-		</a>
-
+		</a>';
+	if ($is_new)
+		$return .= '
 		<a href="#" class="add" onclick="quick_schedule(\''.$block['course_rn'].'\',
 				\''.$block['day_id'].'\', \''.$block['start_time'].'\'); return false;">
 			Quick<br />Schedule
-		</a>
-
-	</li>';
+		</a>';
+	$return .= '</li>';
+	return $return;
 }
 
 /*
