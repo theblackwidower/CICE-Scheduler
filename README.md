@@ -10,6 +10,12 @@ This application was built for, and is exclusively licensed to the Community Int
 
 If you wish to use this application, in whole or in part, please contact by [email](mailto:theblackwidower@noprestige.com) for permission.
 
+## Integrated Help
+
+This application comes with an integrated help function. For information on the current page, click on the 'Help' button in the bottom left corner of the screen.
+
+Currently, this function is a work in progress, as not all functions have a 'help' page written.
+
 ## Installation
 
 This application is to be run on an Apache Server, running PHP, with a PostgreSQL back-end.
@@ -35,6 +41,6 @@ Open modules/constants.php and change the SITE_FOLDER constant to match whatever
 
 Open modules/dblogin.php and edit the data within to match the PostgreSQL database settings, and user information.
 
-Open the application on your web browser and click on "Login". The default admin username and password is 'admin' and 'password'. Once logged in, you will be immediately asked to change your password. This is required. Change the password to something memorable and unique.
+Open the application on your web browser and click on "Login". The default admin username (email address) and password is 'admin' and 'password'. Once logged in, you will be immediately asked to change your password. This is required. Change the password to something memorable and unique.
 
 After this, the application has been successfully installed.
