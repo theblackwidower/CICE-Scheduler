@@ -64,6 +64,12 @@ form>ul>li ul>li
 	list-style-type: disc;
 }
 
+.scrollable_list
+{
+	overflow-y: auto;
+	max-height: 4em;
+}
+
 /********
 * ADMIN *
 ********/

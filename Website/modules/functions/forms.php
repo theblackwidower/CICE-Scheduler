@@ -125,7 +125,7 @@ function form_read_only_list($id, $label, $items, $param)
 	echo '
 	<li>
 		<label>'.$label.'</label>
-		<ul>';
+		<ul class="scrollable_list">';
 			foreach ($items as $value)
 			{
 				echo '<li>';
