@@ -209,9 +209,20 @@ form ul li input.set
 	content: ":";
 }
 
-.page_nav
+.search_results
 {
 	margin-top: 1em;
+}
+
+.page_nav
+{
+	margin-bottom: 1em;
+}
+
+.page_nav:last-child
+{
+	margin-top: 1em;
+	margin-bottom: 0;
 }
 
 .page_nav .selected_page
