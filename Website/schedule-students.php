@@ -81,9 +81,7 @@ else
 	$booked_students = get_assigned_students($semester_id, $course_rn, $day_id, $start_time, $facilitator);
 	if (count($booked_students) > 0)
 	{
-		echo '<div class="search_results">';
-			display_search_results('assigned-students-scheduling', $booked_students, $_GET);
-		echo '</div>';
+		display_search_results('assigned-students-scheduling', $booked_students, $_GET);
 	}
 	if (count_assigned_students($semester_id, $course_rn, $day_id, $start_time, $facilitator) < MAX_STUDENTS_PER_FACILITATOR)
 	{
@@ -91,9 +89,7 @@ else
 		if (count($available_students) > 0)
 		{
 			echo '<h2>Available Students</h2>';
-			echo '<div class="search_results">';
-				display_search_results('unassigned-students-scheduling', $available_students, $_GET);
-			echo '</div>';
+			display_search_results('unassigned-students-scheduling', $available_students, $_GET);
 		}
 	}
 

@@ -90,14 +90,10 @@ else
 	if (count($booked_facilitators) > 0)
 	{
 		$extra_info = array('semester_id' => $semester_id, 'course_rn' => $course_rn, 'day_id' => $day_id, 'start_time' => $start_time);
-		echo '<div class="search_results">';
-			display_search_results('booked-facilitators-scheduling', $booked_facilitators, $extra_info);
-		echo '</div>';
+		display_search_results('booked-facilitators-scheduling', $booked_facilitators, $extra_info);
 	}
 	echo '<h2>Available Facilitators</h2>';
 	$available_facilitators = search_available_facilitators($semester_id, $day_id, $start_time, $end_time, get_rooms_campus($room_number));
-	echo '<div class="search_results">';
-		display_search_results('available-facilitators-scheduling', $available_facilitators, $_GET);
-	echo '</div>';
+	display_search_results('available-facilitators-scheduling', $available_facilitators, $_GET);
 
 include "modules/footer.php";

@@ -25,8 +25,6 @@ $all_classes = get_classes($course_code, $semester_id);
 ?>
 	<h3><?php echo $course_code; ?></h3>
 	<h4><?php echo get_course_name($course_code); ?></h4>
-	<div class="search_results">
-		<?php display_search_results('classes', $all_classes); ?>
-	</div>
+	<?php display_search_results('classes', $all_classes); ?>
 	<h4><a href="class-add.php?course=<?php echo urlencode($course_code); ?>">Add another class</a></h4>
 <?php include "modules/footer.php";

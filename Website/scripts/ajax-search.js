@@ -19,7 +19,7 @@ function ajax_search(searchBox, name)
 	ajaxRequest.onreadystatechange = function()
 	{
 		if(ajaxRequest.readyState === 4 && ajaxRequest.status === 200)
-			list.innerHTML = ajaxRequest.responseText;
+			list.outerHTML = ajaxRequest.responseText;
 	}
 
 	ajaxRequest.open("GET", "ajax/search.php?q=" + encodeURI(searchBox.value) + "&f=" + encodeURI(name));

@@ -70,9 +70,7 @@ if (count($unpaired_students) + count($overbooked_classes) > 0)
 	if (count($unpaired_students) > 0)
 	{
 		echo '<h2>Classes with Unpaired Students</h2>';
-		echo '<div class="search_results">';
-			display_search_results('new-scheduling', $unpaired_students);
-		echo '</div>';
+		display_search_results('new-scheduling', $unpaired_students);
 		echo '
 		<form id="quick_add" method="post" action="'.$_SERVER['PHP_SELF'].'" class="hidden">
 			<div>
@@ -85,9 +83,7 @@ if (count($unpaired_students) + count($overbooked_classes) > 0)
 	if (count($overbooked_classes) > 0)
 	{
 		echo '<h2>Overbooked Classes</h2>';
-		echo '<div class="search_results">';
-			display_search_results('scheduling', $overbooked_classes);
-		echo '</div>';
+		display_search_results('scheduling', $overbooked_classes);
 	}
 }
 else

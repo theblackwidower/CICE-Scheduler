@@ -11,8 +11,7 @@ function form_ajax_search($id)
 		<label for="search_box">Search</label>
 		<input name="search" id="search_box" type="text" value="" size="20" maxlength="255"
 			oninput="ajax_search(this, \''.$id.'\');" />
-	</form>
-	<div class="search_results">';
+	</form>';
 
 	if ($id == 'users')
 		$all_items = get_all_users();
@@ -48,7 +47,7 @@ function form_ajax_search($id)
 
 	display_search_results($id, $all_items);
 
-	echo '</div>';/*
+	/*
 	<script type="text/javascript">
 	<!--
 		ajax_search(document.getElementById('search_box'), 'students');
