@@ -105,7 +105,7 @@ function build_timetable($start_schedule, $end_schedule, $contents, $include_lin
 }
 
 /*
-build_timetable:
+format_timetable_cell:
 class: class data in associative array
 include_link: code for which link to include in timetable cells
 To build a the contents of a timetable cell for display
