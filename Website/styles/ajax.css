@@ -101,6 +101,7 @@
 ***************/
 .auto_complete_box
 {
+	background-color: white;
 	position: absolute;
 	width: 10em;
 	border: 2px solid black;
@@ -109,12 +110,10 @@
 
 .auto_complete_box>span
 {
-	background-color: white;
 	text-align: center;
-	border-radius: calc(.5em - 2px);
-	border-top-left-radius: 0;
 	display: block;
 	padding: .25em;
+	line-height: 0;
 }
 
 .auto_complete_box>span img
@@ -200,6 +199,7 @@ form ul li input.set
 {
 	font-weight: bold;
 	text-align: center;
+	height: 2em;
 }
 
 .auto_complete_default
