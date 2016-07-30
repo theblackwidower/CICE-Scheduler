@@ -274,7 +274,8 @@ function display_autocomplete_item($item, $value_id, $title_id, $subtitle_id)
 		$title = $item[$title_id];
 	$subtitle = $item[$subtitle_id];
 	echo '
-		<a href="#" onclick="complete(this, \''.$value.'\'); return false;">
+		<a href="#" onclick="complete(this, \''.$value.'\'); return false;"
+				onmouseover="auto_complete_mouse_selection(this)">
 			<span class="title">'.$title.'</span>
 			<span class="subtitle">'.$subtitle.'</span>
 		</a>';

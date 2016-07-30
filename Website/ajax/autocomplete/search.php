@@ -41,5 +41,6 @@ else if ($field == 'crn')
 foreach ($all_items as $item)
 	display_autocomplete_item($item, $value_id, $title_id, $subtitle_id);
 
-echo '<a href="#" class="add_message" onclick="new_popup(\''.$field.'\', \'autocomplete/add-popup.php?f='.$field.'\');
-			return false;">Add<br />'.$display_name.'</a>';
+echo '<a href="#" class="add_message"
+			onclick="new_popup(\''.$field.'\', \'autocomplete/add-popup.php?f='.$field.'\');
+			return false;" onmouseover="auto_complete_mouse_selection(this)">Add<br />'.$display_name.'</a>';

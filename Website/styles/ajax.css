@@ -158,7 +158,11 @@ form ul li input.set
 	background-color: #bfc;
 }
 
-.auto_complete_box a:hover,
+.auto_complete_box a:hover
+{
+	text-decoration: none;
+}
+
 .auto_complete_box #auto_complete_selected
 {
 	background: #444;

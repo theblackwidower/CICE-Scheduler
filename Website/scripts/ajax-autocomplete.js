@@ -170,3 +170,29 @@ function auto_complete_keyboard_controls(event)
 	if (success)
 		event.preventDefault();
 }
+
+/*
+auto_complete_mouse_selection:
+item: autocomplete item that is being selected by mouse.
+Will select the autocomplete item to ensure seamlessness between keyboard and mouse.
+*/
+function auto_complete_mouse_selection(item)
+{
+	var autoCompleteBox = item.parentElement
+	var selected = document.getElementById('auto_complete_selected');
+	if (autoCompleteBox.contains(selected))
+		selected.id = "";
+	item.id = "auto_complete_selected";
+}
+
+/*
+auto_complete_clear_selection:
+autoCompleteBox: autocomplete box that needs to be reset.
+Will reset the autocomplete selection.
+*/
+function auto_complete_clear_selection(autoCompleteBox)
+{
+	var selected = document.getElementById('auto_complete_selected');
+	if (autoCompleteBox.contains(selected))
+		selected.id = "";
+}
