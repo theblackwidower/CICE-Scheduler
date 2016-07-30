@@ -88,7 +88,7 @@ function build_timetable($start_schedule, $end_schedule, $contents, $include_lin
 		else
 			return schedule_error($contents, $day_id, $start_time, $include_link);	//we have an error
 	}
-	$output = '<table class="schedule"><tr><th></th>';
+	$output = '<table class="timetable"><tr><th></th>';
 	foreach ($days as $day)
 		$output .= '<th>'.$day['day_name'].'</th>';
 	$output .= '</tr>';

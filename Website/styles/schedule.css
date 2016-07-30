@@ -1,14 +1,14 @@
 /***********
 * SCHEDULE *
 ***********/
-table.schedule
+.timetable
 {
 	margin: 0 auto;
 	border-collapse: collapse;
 }
 
-table.schedule tr:not(:last-child) td,
-table.schedule th:not(:first-child)
+.timetable tr:not(:last-child) td,
+.timetable th:not(:first-child)
 {
 	border: 1px solid black;
 	min-width: 6.75em;
@@ -18,31 +18,31 @@ table.schedule th:not(:first-child)
 	padding: .15em;
 }
 
-table.schedule th:not(:first-child)
+.timetable th:not(:first-child)
 {
 	background-color: #D6D6FF;
 }
 
-table.schedule td:not(:first-child)>*
+.timetable td:not(:first-child)>*
 {
 	display: block;
 }
 
-table.schedule td:not(:first-child)>*.students
+.timetable td:not(:first-child)>.students
 {
 	padding-left: 1em;
 	margin: .25em 0;
 	font-size: small;
 }
 
-table.schedule td:not(:first-child)>a
+.timetable td:not(:first-child)>a
 {
 	margin-left: .5em;
 	font-size: small;
 }
 
-table.schedule tr td:first-child,
-table.schedule tr th:first-child
+.timetable tr td:first-child,
+.timetable tr th:first-child
 {
 	min-width: 4.5em;
 	text-decoration: underline;
@@ -50,17 +50,17 @@ table.schedule tr th:first-child
 	/*83x54*/
 }
 
-table.schedule tr:last-child td
+.timetable tr:last-child td
 {
 	text-align: left;
 }
 
-table.schedule tr td:empty
+.timetable tr td:empty
 {
 	background-color: #E2E2E2;
 }
 
-table.schedule tr td.new_item
+.timetable tr td.new_item
 {
 	background-color: #ff7;
 	color: #333;
