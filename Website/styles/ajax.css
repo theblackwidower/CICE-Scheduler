@@ -113,6 +113,8 @@
 	text-align: center;
 	border-radius: calc(.5em - 2px);
 	border-top-left-radius: 0;
+	display: block;
+	padding: .25em;
 }
 
 .auto_complete_box>span img
