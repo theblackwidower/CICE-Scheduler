@@ -136,7 +136,7 @@
 	border-bottom-right-radius: calc(.5em - 2px);
 }
 
-.auto_complete_box>*
+.auto_complete_box>a
 {
 	display: block;
 	padding: .25em .5em;
@@ -162,7 +162,7 @@ form ul li input.set
 .auto_complete_box #auto_complete_selected
 {
 	background: #444;
-	color: black;
+	text-decoration: underline;
 }
 
 .auto_complete_box a:active
