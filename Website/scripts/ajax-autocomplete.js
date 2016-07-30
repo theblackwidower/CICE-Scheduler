@@ -49,26 +49,35 @@ function complete(source, id)
 			fields[i].classList.add('set');
 		}
 	}
+	source.parentNode.classList.remove('dont_close');
 	source.parentNode.innerHTML = '';
 }
 
 /*
 close_auto_complete:
 parent_li: li tag that contains all elements of the autocomplete object
-Will close the autocomplete display box after a slight half-second delay.
+Will close the autocomplete display box as long as it's not being held open by a 'don't close' flag.
 */
 function close_auto_complete(parent_li)
 {
-	setTimeout(function ()
-	{
-		var autoCompleteBoxes = document.getElementsByClassName('auto_complete_box');
+	var autoCompleteBoxes = document.getElementsByClassName('auto_complete_box');
 
-		for (var i = 0; i < autoCompleteBoxes.length; i++)
-		{
-			if (parent_li.contains(autoCompleteBoxes[i]))
-				autoCompleteBoxes[i].innerHTML = '';
-		}
-	}, 500); //half-second delay
+	for (var i = 0; i < autoCompleteBoxes.length; i++)
+	{
+		if (parent_li.contains(autoCompleteBoxes[i]) &&
+				!autoCompleteBoxes[i].classList.contains('dont_close'))
+			autoCompleteBoxes[i].innerHTML = '';
+	}
+}
+
+/*
+prevent_close:
+autoCompleteBox: autocomplete box to keep open
+Will prevent the autocomplete box from closing by the textbox's onblur event.
+*/
+function prevent_close(autoCompleteBox)
+{
+	autoCompleteBox.classList.add('dont_close');
 }
 
 /*
@@ -195,4 +204,5 @@ function auto_complete_clear_selection(autoCompleteBox)
 	var selected = document.getElementById('auto_complete_selected');
 	if (autoCompleteBox.contains(selected))
 		selected.id = "";
+	autoCompleteBox.classList.remove('dont_close');
 }

@@ -43,4 +43,6 @@ foreach ($all_items as $item)
 
 echo '<a href="#" class="add_message"
 			onclick="new_popup(\''.$field.'\', \'autocomplete/add-popup.php?f='.$field.'\');
+			auto_complete_clear_selection(this.parentNode)
+			close_auto_complete(this.parentNode.parentNode);
 			return false;" onmouseover="auto_complete_mouse_selection(this)">Add<br />'.$display_name.'</a>';
