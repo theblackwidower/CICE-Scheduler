@@ -59,7 +59,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		if ($is_student_assigned)
 			echo 'Students have been assigned.<br />';
 		echo '<a href="schedule-class.php?crn='.urlencode($course_rn).
-				'&day='.urlencode($day_id).'&time='.urlencode($start_time).'">Details</a></h3>';
+				'&amp;day='.urlencode($day_id).'&amp;time='.urlencode($start_time).'">Details</a></h3>';
 	}
 }
 
@@ -74,10 +74,12 @@ if (count($unpaired_students) + count($overbooked_classes) > 0)
 			display_search_results('new-scheduling', $unpaired_students);
 		echo '</div>';
 		echo '
-		<form id="quick_add" method="post" action="'.$_SERVER['PHP_SELF'].'">
-		<input id="course_rn" name="course_rn" type="hidden" value="" />
-		<input id="day_id" name="day_id" type="hidden" value="" />
-		<input id="start_time" name="start_time" type="hidden" value="" />
+		<form id="quick_add" method="post" action="'.$_SERVER['PHP_SELF'].'" class="hidden">
+			<div>
+				<input id="course_rn" name="course_rn" type="hidden" value="" />
+				<input id="day_id" name="day_id" type="hidden" value="" />
+				<input id="start_time" name="start_time" type="hidden" value="" />
+			</div>
 		</form>';
 	}
 	if (count($overbooked_classes) > 0)

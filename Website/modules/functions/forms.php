@@ -64,7 +64,7 @@ function form_open_post()
 {
 	echo '
 	<form method="post" action="'.$_SERVER['PHP_SELF'].
-	((count($_GET) > 0)?'?'.http_build_query($_GET):'').
+	((count($_GET) > 0)?'?'.htmlentities(http_build_query($_GET)):'').
 	'" onreset="reset_form(this); return false;">';
 }
 

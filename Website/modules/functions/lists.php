@@ -246,7 +246,7 @@ function display_registration_ul($registration_list, $student_id)
 			<span class="crn">'.$class['course_rn'].'</span>
 			<span class="course_code">'.$class['course_code'].'</span>
 			<span class="course_name">'.$class['course_name'].'</span>
-			<a href="student-schedule-delete.php?id='.$student_id.'&crn='.$class['course_rn'].'">Delete</a>
+			<a href="student-schedule-delete.php?id='.$student_id.'&amp;crn='.$class['course_rn'].'">Delete</a>
 			<span class="professor">'.get_professor_name($class['professor_id'], NAME_FORMAT_LAST_NAME_FIRST_INITIAL).'</span>
 		</li>';
 
@@ -296,7 +296,7 @@ function display_class_for_scheduling_li($block, $is_new)
 			<span class="course">'.$course['course_code'].' - '.$course['course_name'].'</span>
 		</div>
 		<a class="edit" href="schedule-class.php?crn='.urlencode($block['course_rn']).
-				'&day='.urlencode($block['day_id']).'&time='.urlencode($block['start_time']).'">
+				'&amp;day='.urlencode($block['day_id']).'&amp;time='.urlencode($block['start_time']).'">
 			Schedule<br />Facilitators
 		</a>';
 	if ($is_new)
@@ -325,7 +325,7 @@ function display_available_facilitators_li($email, $class_info)
 		</div>
 		<a href="#" class="schedule"
 				onclick="new_popup(\'schedule\', \'schedule.php?email='.
-				urlencode($email).'&'.http_build_query($class_info).'\'); return false;">
+				urlencode($email).'&amp;'.http_build_query($class_info).'\'); return false;">
 			View<br />Schedule
 		</a>
 		<a href="#" class="add" onclick="quick_post_submit(\''.$email.'\', \'add\'); return false;">
@@ -351,8 +351,8 @@ function display_booked_facilitators_li($email, $semester_id, $course_rn, $day_i
 			<span class="name">'.get_facilitator_name($email, NAME_FORMAT_LAST_NAME_FIRST).'</span>
 			<span class="id">'.$email.'</span>
 		</div>
-		<a class="edit" href="schedule-students.php?crn='.urlencode($course_rn).'&day='.urlencode($day_id).
-				'&time='.urlencode($start_time).'&facilitator='.urlencode($email).'">
+		<a class="edit" href="schedule-students.php?crn='.urlencode($course_rn).'&amp;day='.urlencode($day_id).
+				'&amp;time='.urlencode($start_time).'&amp;facilitator='.urlencode($email).'">
 			Assign<br />Students
 		</a>
 		<a href="#" class="quick" onclick="quick_post_submit(\''.$email.'\', \'quick-students\'); return false;">

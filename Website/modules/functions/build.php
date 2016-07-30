@@ -136,13 +136,13 @@ function format_timetable_cell($class, $include_link)
 
 	if ($include_link == TT_LINK_CLASS_TIME_DELETE)
 		$output .= '<a href="class-time-delete.php?day='.urlencode($class['day_id']).
-			'&time='.urlencode($class['start_time']).'&room='.urlencode($class['room_number']).'">Delete</a>';
+			'&amp;time='.urlencode($class['start_time']).'&amp;room='.urlencode($class['room_number']).'">Delete</a>';
 	else if ($include_link == TT_LINK_SCHEDULE_EDIT && $class['class_role'] == SCHEDULE_ROLE_FACILITATE)
 		$output .= '<a href="schedule-class.php?crn='.urlencode($class['course_rn']).
-			'&day='.urlencode($class['day_id']).'&time='.urlencode($class['start_time']).'">Edit</a>';
+			'&amp;day='.urlencode($class['day_id']).'&amp;time='.urlencode($class['start_time']).'">Edit</a>';
 	else if ($include_link == TT_LINK_SCHEDULE_EDIT_FROM_STUDENT)
 		$output .= '<a href="schedule-class.php?crn='.urlencode($class['course_rn']).
-			'&day='.urlencode($class['day_id']).'&time='.urlencode($class['start_time']).'">Schedule<br />Facilitators</a>';
+			'&amp;day='.urlencode($class['day_id']).'&amp;time='.urlencode($class['start_time']).'">Schedule<br />Facilitators</a>';
 
 	return $output;
 }

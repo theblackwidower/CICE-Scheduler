@@ -63,7 +63,7 @@ else
 	<form id="class_data" method="post" action="<?php echo $_SERVER['PHP_SELF'].'?'.http_build_query($_GET);?>">
 		<ul>
 			<?php
-			form_back_button('schedule-class.php?crn='.urlencode($course_rn).'&day='.urlencode($day_id).'&time='.urlencode($start_time));
+			form_back_button('schedule-class.php?crn='.urlencode($course_rn).'&amp;day='.urlencode($day_id).'&amp;time='.urlencode($start_time));
 			form_read_only('semester_id', 'Semester', $semester_id);
 			form_read_only('course_rn', 'CRN', $course_rn);
 			form_read_only('room_number', 'Room', $room_number);
