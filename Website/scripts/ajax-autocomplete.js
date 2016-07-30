@@ -110,7 +110,6 @@ function auto_complete_keyboard_controls(event)
 {
 	var autoCompleteBox = event.currentTarget.parentNode.getElementsByClassName('auto_complete_box')[0];
 	var selected = document.getElementById('auto_complete_selected');
-	var success = true;
 	if (event.key === "Tab" || event.keyCode === 9 ||
 			event.key === "Enter" || event.keyCode === 13)
 	{
@@ -119,37 +118,42 @@ function auto_complete_keyboard_controls(event)
 			selected.click();
 		var formItems = event.currentTarget.form.getElementsByClassName('form_item');
 		var foundThis = false;
-		//go to previous
-		if (event.shiftKey)
+		if (event.key === "Enter" || event.keyCode === 13)
 		{
-			for (var i = formItems.length - 1; i >= 0; i--)
+			event.preventDefault();
+			//go to previous
+			if (event.shiftKey)
 			{
-				if (formItems[i] === event.currentTarget)
-					foundThis = true;
-				else if (foundThis && formItems[i].type !== 'hidden')
+				for (var i = formItems.length - 1; i >= 0; i--)
 				{
-					formItems[i].focus();
-					break;
+					if (formItems[i] === event.currentTarget)
+						foundThis = true;
+					else if (foundThis && formItems[i].type !== 'hidden')
+					{
+						formItems[i].focus();
+						break;
+					}
 				}
 			}
-		}
-		//go to next
-		else
-		{
-			for (var i = 0; i < formItems.length; i++)
+			//go to next
+			else
 			{
-				if (formItems[i] === event.currentTarget)
-					foundThis = true;
-				else if (foundThis && formItems[i].type !== 'hidden')
+				for (var i = 0; i < formItems.length; i++)
 				{
-					formItems[i].focus();
-					break;
+					if (formItems[i] === event.currentTarget)
+						foundThis = true;
+					else if (foundThis && formItems[i].type !== 'hidden')
+					{
+						formItems[i].focus();
+						break;
+					}
 				}
 			}
 		}
 	}
 	else if (event.key === "Up" || event.key === "ArrowUp" || event.keyCode === 38)
 	{
+		event.preventDefault();
 		if (autoCompleteBox.contains(selected))
 		{
 			selected.id = "";
@@ -163,6 +167,7 @@ function auto_complete_keyboard_controls(event)
 	}
 	else if (event.key === "Down" || event.key === "ArrowDown" || event.keyCode === 40)
 	{
+		event.preventDefault();
 		if (autoCompleteBox.contains(selected))
 		{
 			selected.id = "";
@@ -174,10 +179,6 @@ function auto_complete_keyboard_controls(event)
 		else if (autoCompleteBox.innerHTML !== "")
 			autoCompleteBox.firstElementChild.id = "auto_complete_selected";
 	}
-	else
-		success = false;
-	if (success)
-		event.preventDefault();
 }
 
 /*
