@@ -14,7 +14,12 @@ function login($email, $password)
 	$stmt = $conn->prepare('SELECT password, role_id, force_new_password FROM tbl_users WHERE :email = email');
 	$stmt->bindValue(':email', $email);
 	$data = execute_fetch_obj($stmt);
-	if ($data === false || !password_verify($password, $data->password))
+	if ($data === false)
+	{
+		password_hash($password, PASSWORD_DEFAULT); //prevent timing attack
+		return 0;
+	}
+	else if (!password_verify($password, $data->password))
 		return 0;
 	else if ($data->role_id == ROLE_DISABLED)
 	{
