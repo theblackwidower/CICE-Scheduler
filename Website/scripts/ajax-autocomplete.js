@@ -116,11 +116,11 @@ function auto_complete_keyboard_controls(event)
 		//activate selected item
 		if (autoCompleteBox.contains(selected))
 			selected.click();
-		var formItems = event.currentTarget.form.getElementsByClassName('form_item');
-		var foundThis = false;
 		if (event.key === "Enter" || event.keyCode === 13)
 		{
 			event.preventDefault();
+			var formItems = event.currentTarget.form.getElementsByClassName('form_item');
+			var foundThis = false;
 			//go to previous
 			if (event.shiftKey)
 			{
