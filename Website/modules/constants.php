@@ -7,6 +7,10 @@ define("EMAIL_ENABLED", false);
 //if it's running on the root of the server, use a forward slash. '/'
 define("SITE_FOLDER", '/cice/');
 
+//Storing admin contact information for users to report issues.
+define("ADMIN_NAME", 'Elizabeth Campbell');
+define("ADMIN_CONTACT", 'elizabeth.campbell@durhamcollege.ca');
+
 define("START_SCHEDULE", 8); // 24-hour clock, 8am
 define("END_SCHEDULE", 18);  // 24-hour clock, 6pm
 
