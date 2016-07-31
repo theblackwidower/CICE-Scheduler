@@ -252,7 +252,7 @@ function form_autocomplete_box($id, $label, $field, $value)
 			onkeydown="auto_complete_keyboard_controls(event);"
 			onblur="close_auto_complete(this.parentNode);" class="form_item" />
 		<div class="auto_complete_box" onmouseover="prevent_close(this)"
-		onmouseout="auto_complete_clear_selection(this)"></div>
+			onmouseout="auto_complete_clear_selection(this)"></div>
 		<input name="'.$id.'" type="hidden" value="'.$value.'" />
 		<div class="auto_complete_default">'.$value.'</div>
 	</li>';
