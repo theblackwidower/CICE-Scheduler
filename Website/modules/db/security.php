@@ -141,7 +141,7 @@ function search_users($search, $max_results = MAX_SEARCH_RESULT)
 {
 	global $conn;
 	$stmt = $conn->prepare('SELECT email, role_id
-			FROM tbl_users WHERE LOWER(email) LIKE LOWER(:search) ORDER BY email LIMIT :max_results');
+			FROM tbl_users WHERE email ILIKE :search ORDER BY email LIMIT :max_results');
 	$stmt->bindValue(':search', '%'.$search.'%'); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);

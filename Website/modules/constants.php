@@ -61,4 +61,4 @@ define("MAX_HOURS_STRAIGHT", 4);
 define("MAX_STUDENTS_PER_FACILITATOR", 3);
 define("MAX_CLASS_LENGTH", 4); //Also marked in /modules/scripts/main.js
 
-define("SQL_NAME_SEARCH", "(LOWER(first_name) LIKE LOWER(:search) OR LOWER(last_name) LIKE LOWER(:search))");
+define("SQL_NAME_SEARCH", "(first_name ILIKE :search OR last_name ILIKE :search)");
