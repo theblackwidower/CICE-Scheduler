@@ -34,6 +34,8 @@ Displays indicated page
 */
 function search_page(pageNumber, resultsBox)
 {
+	resultsBox.classList.remove('view_all');
+
 	var currentPage = resultsBox.getElementsByClassName('page_' + pageNumber)[0];
 	//checks if page exists
 	if (currentPage !== null)
@@ -106,6 +108,8 @@ Displays all results.
 */
 function search_page_all(resultsBox)
 {
+	resultsBox.classList.add('view_all');
+
 	var pages = resultsBox.getElementsByClassName('block_list');
 
 	//ensure all numbers on nav bar are enabled

@@ -22,6 +22,11 @@
 	visibility: hidden;
 }
 
+.view_all .block_list .spacer
+{
+	display: none;
+}
+
 .block_list li div
 {
 	width: 24em;
