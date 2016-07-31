@@ -133,6 +133,12 @@ switch ($file)
 			Here you can assign a different professor to a class.
 		</p>
 		<p>
+			The new professor must have their timetable free during the same time
+			blocks currently occupied by the class. If there is a conflict, you will
+			be alerted to it, and might need to delete the time conflicts before
+			continuing.
+		</p>
+		<p>
 			Be aware that if the new professor is also a facilitator, and this
 			assignment creates conflicts in their schedule, most facilitation
 			conflicts will be deleted automatically, which might require new
@@ -188,8 +194,9 @@ switch ($file)
 			They also cannot be longer than <?php echo MAX_CLASS_LENGTH; ?> hours.
 		</p>
 		<p>
-			Conflicts may also arise if the class or room is already booked at that
-			time. These conflicts must be resolved before adding the new class time.
+			Conflicts may also arise if the class, room or professor is already booked
+			at that time. These conflicts must be resolved before adding the new class
+			time.
 		</p>
 		<p>
 			If this class is taught by a facilitator and the new class block will
