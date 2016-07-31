@@ -55,6 +55,6 @@ define("MAX_HOURS_IN_DAY", 8);
 define("MIN_HOURS_TRAVEL_TIME", 2);
 define("MAX_HOURS_STRAIGHT", 4);
 define("MAX_STUDENTS_PER_FACILITATOR", 3);
-define("MAX_CLASS_LENGTH", 4);
+define("MAX_CLASS_LENGTH", 4); //Also marked in /modules/scripts/main.js
 
 define("SQL_NAME_SEARCH", "(LOWER(first_name) LIKE LOWER(:search) OR LOWER(last_name) LIKE LOWER(:search))");
