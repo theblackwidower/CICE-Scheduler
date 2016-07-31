@@ -158,61 +158,128 @@ switch ($file)
 		?>
 		<h3>Class Schedule</h3>
 		<p>
-
+			Here, every class meeting time for a particular class block is displayed
+			in a convienient timetable, with locations.
+		</p>
+		<p>
+			A new meeting time can be added by clicking on the link at the bottom of
+			the page.
+		</p>
+		<p>
+			If a particular class time has been rescheduled or dropped, you can delete
+			the old time by clicking the 'Delete' link in the timetable, and adding
+			the new time if necessary. There is no way to edit a class time.
 		</p>
 		<?php
 		break;
 
 	case 'class-time-add.php':
 		?>
-		<h3></h3>
+		<h3>Add Class Time</h3>
 		<p>
-
+			From here, one can add a new meeting time for a particular class block.
+		</p>
+		<p>
+			Select the day, the room number, and the start and end times for the
+			class, and click the 'Create' button to submit.
+		</p>
+		<p>
+			Classes cannot end before they start, and must be at least 1 hour long.
+			They also cannot be longer than <?php echo MAX_CLASS_LENGTH; ?> hours.
+		</p>
+		<p>
+			Conflicts may also arise if the class or room is already booked at that
+			time. These conflicts must be resolved before adding the new class time.
+		</p>
+		<p>
+			If this class is taught by a facilitator and the new class block will
+			cause a scheduling conflict, the system will react dynamically to prevent
+			the most problematic issues. Be sure if the class is taught by a
+			facilitator to check to see if any minor problems remain within their
+			schedule.
 		</p>
 		<?php
 		break;
 
 	case 'class-time-delete.php':
 		?>
-		<h3></h3>
+		<h3>Delete Class Time</h3>
 		<p>
-
+			Click 'Yes' to remove the class block. Click 'No' to go back.
 		</p>
 		<?php
 		break;
 
 	case 'course-add.php':
 		?>
-		<h3></h3>
+		<h3>Add Course</h3>
 		<p>
-
+			Here, you can add a new course to the system.
+		</p>
+		<p>
+			Be aware that a course differs from a class block or CRN. The course
+			defines multiple classes with a shared subject matter. Individual classes
+			are assigned individual professors, but a course will likely have multiple
+			professors teaching it.
+		</p>
+		<p>
+			Enter the course code and course name, then click 'Create' to add a new
+			course.
+		</p>
+		<p>
+			Course codes must follow a very specific format. The first half can
+			contain only letters, and the second half must start with a number. Each
+			half cannot be more than 5 characters.
 		</p>
 		<?php
 		break;
 
 	case 'course-edit.php':
 		?>
-		<h3></h3>
+		<h3>Edit Course</h3>
 		<p>
-
+			From here you can change a course name, or deactivate the course by
+			deselecting the 'Active' checkbox, and clicking 'Update.'
+		</p>
+		<p>
+			If a course is deactivated, it will no longer show up in search, or form
+			autocomplete sections. Only deactivate a course if it is no longer being
+			made available for registration in the current semester.
+		</p>
+		<p>
+			If you wish to reactivate a course, just select the 'Active' checkbox, and
+			click 'Update.'
 		</p>
 		<?php
 		break;
 
 	case 'course-inactive.php':
 		?>
-		<h3></h3>
+		<h3>Inactive Courses</h3>
 		<p>
-
+			Here, all inactive courses are listed.
+		</p>
+		<p>
+			If you wish to reactivate a deactivated course, click on 'Edit Course' and
+			select the 'Active' checkbox before clicking 'Update.'
 		</p>
 		<?php
 		break;
 
 	case 'course-list.php':
 		?>
-		<h3></h3>
+		<h3>List Current Courses</h3>
 		<p>
-
+			All courses that are currently active are listed here.
+		</p>
+		<p>
+			You can search through the list by typing a term in the search box. This
+			will search by course code and course name, displaying the first
+			<?php echo MAX_SEARCH_RESULT; ?> results.
+		</p>
+		<p>
+			You can also scroll through, page by page,
+			<?php echo MAX_RESULTS_PER_PAGE; ?> results at a time.
 		</p>
 		<?php
 		break;
