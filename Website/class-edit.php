@@ -17,6 +17,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$professor_id = null;
 	else if ($professor_id == "" || !professor_exists($professor_id))
 		$result .= "Please select a valid professor.<br />";
+	else if ($professor_id != get_class_rn($course_rn, $semester_id)['professor_id'])
+	{
+		$conflict_check = find_prof_conflicts($semester_id, $course_rn, $professor_id);
+		if ($conflict_check !== false)
+			$result .= get_professor_name($professor_id, NAME_FORMAT_FIRST_NAME_FIRST).
+				" cannot be assigned to this class because they're busy for CRN <em>".$conflict_check."</em>.<br />";
+	}
 
 	if ($result == "")
 	{

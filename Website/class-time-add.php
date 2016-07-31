@@ -35,14 +35,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	else if ($end_time - $start_time > MAX_CLASS_LENGTH)
 		$result .= "Class cannot be more than ".MAX_CLASS_LENGTH." hours long.<br />";
 
+	$professor_id = get_class_rn($course_rn, $semester_id)['professor_id'];
+
 	$room_check = is_room_booked($room_number, $day_id, $start_time, $end_time, $semester_id);
 	$class_check = is_class_booked($course_rn, $day_id, $start_time, $end_time, $semester_id);
+	$prof_check = is_prof_booked($professor_id, $day_id, $start_time, $end_time, $semester_id);
 
 	if ($room_check !== false)
 		$result .= "Room booked at that time by CRN <em>".$room_check."</em>.<br />";
 
 	if ($class_check !== false)
 		$result .= "Class busy at that time in room <em>".$class_check."</em>.<br />";
+
+	if ($prof_check !== false)
+		$result .= "Professor busy at that time for CRN <em>".$prof_check."</em>.<br />";
 
 	if ($result == "")
 	{

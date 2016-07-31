@@ -4,6 +4,8 @@ DROP TRIGGER IF EXISTS check_stretch_length ON tbl_schedule;
 DROP TRIGGER IF EXISTS check_day_length ON tbl_schedule;
 DROP TRIGGER IF EXISTS check_travel_time ON tbl_schedule;
 DROP TRIGGER IF EXISTS check_max_paired_students ON tbl_assigned_students;
+DROP TRIGGER IF EXISTS check_prof_overlaps_from_time_change ON tbl_class_times;
+DROP TRIGGER IF EXISTS check_prof_overlaps_from_prof_change ON tbl_classes;
 
 CREATE OR REPLACE FUNCTION check_class_overlaps() RETURNS TRIGGER AS
 $$
@@ -143,6 +145,65 @@ $$
 $$
 LANGUAGE plpgsql;
 
+CREATE OR REPLACE FUNCTION check_prof_overlaps_from_time_change() RETURNS TRIGGER AS
+$$
+	DECLARE
+		overlap_count INTEGER;
+	BEGIN
+		SELECT COUNT(*) INTO overlap_count FROM tbl_class_times WHERE
+				tbl_class_times.semester_id = NEW.semester_id AND
+				tbl_class_times.day_id = NEW.day_id AND
+				tbl_class_times.end_time > NEW.start_time AND
+				tbl_class_times.start_time < NEW.end_time AND
+				tbl_class_times.course_rn IN
+				(SELECT tbl_classes.course_rn FROM tbl_classes WHERE
+					tbl_classes.semester_id = NEW.semester_id AND tbl_classes.professor_id IN (
+						SELECT tbl_classes.professor_id FROM tbl_classes WHERE
+							tbl_classes.semester_id = NEW.semester_id AND tbl_classes.course_rn = NEW.course_rn));
+		IF (overlap_count > 1) THEN
+			RAISE EXCEPTION 'overlap detected with same professor';
+		END IF;
+		RETURN NULL;
+	END;
+$$
+LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION check_prof_overlaps_from_prof_change() RETURNS TRIGGER AS
+$$
+	DECLARE
+		one_day RECORD;
+		overlap_count INTEGER;
+		this_time INTEGER;
+		const_start_schedule CONSTANT INTEGER := 8;
+		const_end_schedule CONSTANT INTEGER := 18;
+	BEGIN
+		FOR one_day IN SELECT DISTINCT day_id FROM tbl_days LOOP
+			this_time := const_start_schedule;
+			LOOP
+				SELECT COUNT(*) INTO overlap_count FROM tbl_classes, tbl_class_times WHERE
+						tbl_classes.semester_id = NEW.semester_id AND
+						tbl_classes.professor_id = NEW.professor_id AND
+						tbl_class_times.semester_id = tbl_classes.semester_id AND
+						tbl_class_times.course_rn = tbl_classes.course_rn AND
+						tbl_class_times.day_id = one_day.day_id AND
+						tbl_class_times.end_time > this_time AND
+						tbl_class_times.start_time <= this_time;
+
+				IF (overlap_count > 1) THEN
+					RAISE EXCEPTION 'overlap detected in professor schedule ';
+				ELSE
+					this_time := this_time + 1;
+					IF (this_time >= const_end_schedule) THEN
+						EXIT;
+					END IF;
+				END IF;
+			END LOOP;
+		END LOOP;
+		RETURN NULL;
+	END;
+$$
+LANGUAGE plpgsql;
+
 CREATE CONSTRAINT TRIGGER check_class_overlaps AFTER INSERT OR UPDATE ON tbl_class_times
 	FOR EACH ROW EXECUTE PROCEDURE check_class_overlaps();
 CREATE CONSTRAINT TRIGGER check_facilitator_overlaps AFTER INSERT OR UPDATE ON tbl_schedule
@@ -155,6 +216,10 @@ CREATE CONSTRAINT TRIGGER check_travel_time AFTER INSERT OR UPDATE ON tbl_schedu
 	FOR EACH ROW EXECUTE PROCEDURE check_travel_time();
 CREATE CONSTRAINT TRIGGER check_max_paired_students AFTER INSERT OR UPDATE ON tbl_assigned_students
 	FOR EACH ROW EXECUTE PROCEDURE check_max_paired_students();
+CREATE CONSTRAINT TRIGGER check_prof_overlaps_from_time_change AFTER INSERT OR UPDATE ON tbl_class_times
+	FOR EACH ROW EXECUTE PROCEDURE check_prof_overlaps_from_time_change();
+CREATE CONSTRAINT TRIGGER check_prof_overlaps_from_prof_change AFTER UPDATE ON tbl_classes
+	FOR EACH ROW EXECUTE PROCEDURE check_prof_overlaps_from_prof_change();
 
 DROP TRIGGER IF EXISTS erase_facilitator_conflicts ON tbl_class_times;
 DROP TRIGGER IF EXISTS erase_facilitator_conflicts ON tbl_classes;

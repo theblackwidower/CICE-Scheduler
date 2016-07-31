@@ -145,6 +145,69 @@ function is_room_booked($room_number, $day_id, $start_time, $end_time, $semester
 }
 
 /*
+is_prof_booked:
+professor_id: id of professor teaching class
+day_id: Id of day
+start_time: Time class starts (24h)
+end_time: Time class ends (24h)
+semester_id: Semester id
+returns crn if professor is booked during the specified time
+*/
+function is_prof_booked($professor_id, $day_id, $start_time, $end_time, $semester_id)
+{
+	global $conn;
+	$stmt = $conn->prepare('SELECT course_rn FROM tbl_class_times
+		WHERE day_id = :day AND semester_id = :semester AND
+			end_time > :start AND start_time < :end AND
+			course_rn IN (SELECT tbl_classes.course_rn FROM tbl_classes WHERE
+				tbl_classes.semester_id = :semester AND tbl_classes.professor_id = :professor)');
+	$stmt->bindValue(':professor', $professor_id);
+	$stmt->bindValue(':day', $day_id);
+	$stmt->bindValue(':start', $start_time);
+	$stmt->bindValue(':end', $end_time);
+	$stmt->bindValue(':semester', $semester_id);
+	return execute_fetch_param($stmt, 'course_rn');
+}
+
+/*
+find_prof_conflicts:
+semester_id: Semester id
+course_rn: CRN, course registration number
+professor_id: id of professor teaching class
+returns crn if professor is booked during the indicated class
+*/
+function find_prof_conflicts($semester_id, $course_rn, $professor_id)
+{
+	global $conn;
+	$stmt = $conn->prepare('SELECT day_id, start_time, end_time FROM tbl_classes, tbl_class_times WHERE
+		tbl_classes.course_rn = tbl_class_times.course_rn AND
+		tbl_classes.semester_id = tbl_class_times.semester_id AND
+		tbl_classes.semester_id = :semester AND tbl_classes.course_rn = :crn');
+	$stmt->bindValue(':crn', $course_rn);
+	$stmt->bindValue(':semester', $semester_id);
+
+	$looper = execute_fetch_all($stmt);
+
+	$stmt = $conn->prepare('SELECT course_rn FROM tbl_class_times
+		WHERE semester_id = :semester AND day_id = :day AND
+			end_time > :start AND start_time < :end AND
+			course_rn IN (SELECT tbl_classes.course_rn FROM tbl_classes WHERE
+				tbl_classes.semester_id = :semester AND tbl_classes.professor_id = :professor)');
+	$stmt->bindValue(':professor', $professor_id);
+	$stmt->bindValue(':semester', $semester_id);
+	foreach ($looper as $class_time)
+	{
+		$stmt->bindValue(':day', $class_time['day_id']);
+		$stmt->bindValue(':start', $class_time['start_time']);
+		$stmt->bindValue(':end', $class_time['end_time']);
+		$result = execute_fetch_param($stmt, 'course_rn');
+		if ($result !== false)
+			return $result;
+	}
+	return false;
+}
+
+/*
 is_class_booked:
 course_rn: CRN, course registration number
 day_id: Id of day
