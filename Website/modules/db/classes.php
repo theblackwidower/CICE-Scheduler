@@ -8,9 +8,8 @@ returns all classes (CRN) connected to course code in associative array
 function get_classes($course_code, $semester_id)
 {
 	global $conn;
-	$stmt = $conn->prepare('SELECT course_rn, first_name, last_name FROM tbl_classes, tbl_professors WHERE
-		tbl_classes.professor_id = tbl_professors.professor_id AND course_code = :course AND
-		semester_id = :semester ORDER BY course_code, course_rn');
+	$stmt = $conn->prepare('SELECT course_rn, professor_id FROM tbl_classes WHERE
+		course_code = :course AND semester_id = :semester ORDER BY course_code, course_rn');
 	$stmt->bindValue(':course', $course_code);
 	$stmt->bindValue(':semester', $semester_id);
 	return execute_fetch_all($stmt);

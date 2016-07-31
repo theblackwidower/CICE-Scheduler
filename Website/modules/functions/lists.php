@@ -194,7 +194,7 @@ function display_class_li($class)
 		<div>
 			<span class="crn">'.$class['course_rn'].'</span>
 			<span class="professor_name">'.
-			format_name($class['first_name'], $class['last_name'], NAME_FORMAT_LAST_NAME_FIRST).'</span>
+			get_professor_name($class['professor_id'], NAME_FORMAT_LAST_NAME_FIRST).'</span>
 		</div>
 		<a class="edit" href="class-edit.php?crn='.urlencode($class['course_rn']).'">
 			Edit<br />Class
