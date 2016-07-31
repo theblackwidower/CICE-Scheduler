@@ -8,28 +8,30 @@ display a login popup box.
 */
 function check_login()
 {
-	if (!is_login_popup)
-	{
-		var ajaxRequest;
-		if (window.XMLHttpRequest)
-			ajaxRequest = new XMLHttpRequest();
-		else
-			ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+	var ajaxRequest;
+	if (window.XMLHttpRequest)
+		ajaxRequest = new XMLHttpRequest();
+	else
+		ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
 
-		ajaxRequest.onreadystatechange = function()
+	ajaxRequest.onreadystatechange = function()
+	{
+		if(ajaxRequest.readyState === 4 && ajaxRequest.status === 200)
 		{
-			if(ajaxRequest.readyState === 4 && ajaxRequest.status === 200)
+			if (!ajaxRequest.response.is_logged_in && !is_login_popup)
+				login_popup();
+			else if (ajaxRequest.response.is_logged_in && is_login_popup)
 			{
-				if (!ajaxRequest.response.is_logged_in)
-					login_popup();
+				document.body.removeChild(document.getElementById("click_shield"));
+				is_login_popup = false;
 			}
 		}
-
-		ajaxRequest.responseType = "json"
-
-		ajaxRequest.open("GET", "ajax/login/check-login.php");
-		ajaxRequest.send();
 	}
+
+	ajaxRequest.responseType = "json"
+
+	ajaxRequest.open("GET", "ajax/login/check-login.php");
+	ajaxRequest.send();
 }
 
 /*
