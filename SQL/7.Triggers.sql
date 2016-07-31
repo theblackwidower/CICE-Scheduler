@@ -196,7 +196,7 @@ $$
 
 		IF FOUND THEN
 			FOR one_record IN SELECT day_id, start_time, end_time, campus_id
-					FROM tbl_class_times WHERE
+					FROM tbl_class_times, tbl_rooms WHERE
 					tbl_class_times.semester_id = NEW.semester_id AND
 					tbl_class_times.course_rn = NEW.course_rn AND
 					tbl_class_times.room_number = tbl_rooms.room_number LOOP
