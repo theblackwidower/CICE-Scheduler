@@ -12,43 +12,50 @@ switch ($file)
 		<h3>Administration Settings</h3>
 		<h4>Set Default Semester</h4>
 		<p>
-			The default semester is the semester which the site currently operates within. By changing the value,
-			you'll be able to edit class and schedule information for a different semester.
+			The default semester is the semester which the site currently operates
+			within. By changing the value, you'll be able to edit class and schedule
+			information for a different semester.
 		</p>
 		<p>
-			Logged in facilitators will only be able to view their schedules for the current semester.
+			Logged in facilitators will only be able to view their schedules for the
+			current semester.
 		</p>
 		<?php if (get_logged_in_role() == ROLE_ADMIN) {?>
 			<h4>Add New Semester</h4>
 			<p>
-				If a semester is not identified in the system, it has to be manually added.
+				If a semester is not identified in the system, it has to be manually
+				added.
 			</p>
 			<p>
-				Semester code should be defined by the following rules: Fall semesters start with an 'F', and
-				winter semesters start with a 'W', followed by the four-digit year. Though this is not enforced
-				by the system itself, and one can choose to define a semester by whatever rules they want.
-				However following these rules will ensure consistency, and will make entry of the start and
-				end dates slightly easier.
+				Semester code should be defined by the following rules: Fall semesters
+				start with an 'F', and winter semesters start with a 'W', followed by
+				the four-digit year. Though this is not enforced by the system itself,
+				and one can choose to define a semester by whatever rules they want.
+				However following these rules will ensure consistency, and will make
+				entry of the start and end dates slightly easier.
 			</p>
 			<p>
-				The start date and end date are crucial to the overall operation of the system. It will be
-				displayed when a facilitator views their schedule, and will allow the system to know which
-				semester is 'current' so the facilitators view the right schedule.
+				The start date and end date are crucial to the overall operation of the
+				system. It will be displayed when a facilitator views their schedule,
+				and will allow the system to know which semester is 'current' so the
+				facilitators view the right schedule.
 			</p>
 			<p>
-				If the semester code is built using the above rules, the year and month will be entered
-				automatically. The actual day number however, will need to be entered manually. The start date
-				should be defined as the first day classes start, and the end date should be the last day normal
+				If the semester code is built using the above rules, the year and month
+				will be entered automatically. The actual day number however, will need
+				to be entered manually. The start date should be defined as the first
+				day classes start, and the end date should be the last day normal
 				classes run. This does not include exams.
 			</p>
 			<h4>Add New Campus</h4>
 			<p>
-				This feature is only necessary if a new campus opens and is unlikely to be used for any other
-				purpose.
+				This feature is only necessary if a new campus opens and is unlikely to
+				be used for any other purpose.
 			</p>
 			<p>
-				Be sure to give the campus a simple name. The campus code must be a single letter, and is
-				recommended to be the first letter of the campus name.
+				Be sure to give the campus a simple name. The campus code must be a
+				single letter, and is recommended to be the first letter of the campus
+				name.
 			</p>
 			<h4>Database Maintenance</h4>
 			<p>
@@ -56,39 +63,47 @@ switch ($file)
 			</p>
 			<h5>Backups</h5>
 			<p>
-				Database backups should be performed regularly. In most frequently-used systems, a database
-				should be backed-up daily, or weekly. In an infrequently-used systems, where things are changing
-				rarely, such as this one, that won't be necessary.
+				Database backups should be performed regularly. In most frequently-used
+				systems, a database should be backed-up daily, or weekly. In an
+				infrequently-used systems, where things are changing rarely, such as
+				this one, that won't be necessary.
 			</p>
 			<p>
-				Database backups are recommended to be performed regularly only when a lot of information is being
-				entered, and before and after every semester. Just remember, in the event of a system failure,
-				anything entered in the system since the last backup will need to be redone.
+				Database backups are recommended to be performed regularly only when a
+				lot of information is being entered, and before and after every
+				semester. Just remember, in the event of a system failure, anything
+				entered in the system since the last backup will need to be redone.
 			</p>
 			<p>
-				These backup files can be saved to your hard drive, and contain all data within the system.
+				These backup files can be saved to your hard drive, and contain all data
+				within the system.
 			</p>
 			<h5>Vacuum</h5>
 			<p>
-				The 'Vacuum' and 'Full Vacuum' buttons allow for a maintenance function that can be used to free
-				space, and speed up the system overall.
+				The 'Vacuum' and 'Full Vacuum' buttons allow for a maintenance function
+				that can be used to free space, and speed up the system overall.
 			</p>
 			<p>
-				A basic vacuum frees up space that has been left behind by deleted records. It also updates the
-				database's own internal census, and allows it to operate more efficiently.
+				A basic vacuum frees up space that has been left behind by deleted
+				records. It also updates the database's own internal census, and allows
+				it to operate more efficiently.
 			</p>
 			<p>
-				A full vacuum also frees up space left behind by deleted records, but is much more through, and
-				therefore more time-consuming than the basic vacuum. While a full vacuum is running, no data
-				within the system can be changed, which is why it should only be run when no one else is using it.
+				A full vacuum also frees up space left behind by deleted records, but is
+				much more through, and therefore more time-consuming than the basic
+				vacuum. While a full vacuum is running, no data within the system can be
+				changed, which is why it should only be run when no one else is using
+				it.
 			</p>
 			<p>
-				A basic vacuum can be run once a week to clean up the internals of the system. A full vacuum
-				should be run much more sparingly, around once or twice a year.
+				A basic vacuum can be run once a week to clean up the internals of the
+				system. A full vacuum should be run much more sparingly, around once or
+				twice a year.
 			</p>
 			<p>
-				Neither operation is mandatory, as the database software itself should run it's own vacuum
-				automatically when necessary. But if it doesn't, it can be a good idea to run it on your own.
+				Neither operation is mandatory, as the database software itself should
+				run it's own vacuum automatically when necessary. But if it doesn't, it
+				can be a good idea to run it on your own.
 			</p>
 		<?php }
 		break;
@@ -97,16 +112,16 @@ switch ($file)
 		?>
 		<h3>Add Class Block</h3>
 		<p>
-			Enter all information to create a new class block. A class block is not the same as a course. This
-			is one class taught by a single professor.
+			Enter all information to create a new class block. A class block is not
+			the same as a course. This is one class taught by a single professor.
 		</p>
 		<p>
 			Be aware that neither course code nor CRN can be changed later.
 		</p>
 		<p>
-			If this class is taught by a facilitator, ensure that the facilitator is also listed as a professor,
-			with the same email address, and added as a professor to the class block, to prevent schedule
-			conflicts.
+			If this class is taught by a facilitator, ensure that the facilitator is
+			also listed as a professor, with the same email address, and added as a
+			professor to the class block, to prevent schedule conflicts.
 		</p>
 		<?php
 		break;
@@ -118,8 +133,9 @@ switch ($file)
 			Here you can assign a different professor to a class.
 		</p>
 		<p>
-			Be aware that if the new professor is also a facilitator, and this assignment creates conflicts in
-			their schedule, most facilitation conflicts will be deleted automatically, which might require new
+			Be aware that if the new professor is also a facilitator, and this
+			assignment creates conflicts in their schedule, most facilitation
+			conflicts will be deleted automatically, which might require new
 			facilitators to be assigned as needed.
 		</p>
 		<?php
@@ -129,8 +145,8 @@ switch ($file)
 		?>
 		<h3>List Classes For Course</h3>
 		<p>
-			Here you will see every class block for a course. From here you can change which professor is assigned
-			to the class, or view the class schedule.
+			Here you will see every class block for a course. From here you can change
+			which professor is assigned to the class, or view the class schedule.
 		</p>
 		<p>
 			Add a new class block for this course by clicking the link at the bottom.
