@@ -12,7 +12,7 @@ function connect()
 {
 	$host = '127.0.0.1';
 	$port = '5432';
-	$user = 'username';
+	$user = 'cice';
 	$password = 'password';
 
 	return new PDO("pgsql:host=".$host.";port=".$port.";dbname=".DATABASE_NAME, $user, $password);
