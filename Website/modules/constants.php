@@ -4,8 +4,10 @@
 define("EMAIL_ENABLED", false);
 
 //should reference the subfolder the application is running in on the webserver.
-//if it's running on the root of the server, use a forward slash. '/'
+//if it's running on the root of the server, use a single forward slash. '/'
 define("SITE_FOLDER", '/cice/');
+//the full URL where the application is hosted.
+define("SITE_URL", 'http://twilight.noprestige.com/cice/');
 
 //Storing admin contact information for users to report issues.
 define("ADMIN_NAME", 'Elizabeth Campbell');
