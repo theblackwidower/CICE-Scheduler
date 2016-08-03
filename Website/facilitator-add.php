@@ -39,7 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			{
 				$result .= "User account created with temporary password";
 				$is_user = true;
-				if (EMAIL_ENABLED && email_password($email, $password))
+				if (email_password($email, $password))
 					$result = ".<br />Password has been emailed to facilitator.";
 				else
 					$result .= ": <em>".$password."</em>";

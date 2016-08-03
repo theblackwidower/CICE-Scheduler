@@ -18,7 +18,7 @@ Currently, this function is a work in progress, as not all functions have a 'hel
 
 ## Installation
 
-This application is to be run on an Apache Server, running PHP, with a PostgreSQL back-end.
+This application is to be run on an Apache Server, running PHP, with a PostgreSQL back-end. PHP should also be setup to access an SMTP server for the automated password email function; but this is not mandatory.
 
 ### PostgreSQL setup
 
@@ -68,6 +68,8 @@ As a final step, run the various permission-setting statements from the PostgreS
 Add the contents of the Website folder to the Apache server's web folder. It can be installed in either the server root, or in a subfolder.
 
 Open modules/constants.php and change the SITE_FOLDER constant to match whatever subfolder the application is stored in on the server. If it's stored in the server root, use nothing more than a forward slash. In this file, you can also enable the email function by changing EMAIL_ENABLED to true. This will allow the system to automatically send new users their account passwords.
+
+Finally, change ADMIN_NAME and ADMIN_CONTACT to match the name and email address of the main admin user. Users will be directed to this email address to send messages regarding timetable conflicts, errors, and discrepancies.
 
 Open modules/dblogin.php and edit the data within to match the PostgreSQL database settings, and user information.
 

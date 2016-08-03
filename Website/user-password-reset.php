@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	if ($code === true)
 	{
 		$result .= "User <em>".$email."</em> account reset with temporary password";
-		if (EMAIL_ENABLED && email_password($email, $new_password))
+		if (email_password($email, $new_password))
 			$result = ".<br />Password has been emailed to user.";
 		else
 			$result .= ": <em>".$new_password."</em>";

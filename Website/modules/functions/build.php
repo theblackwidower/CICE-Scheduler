@@ -183,13 +183,18 @@ Sends password to user through email.
 */
 function email_password($email, $password)
 {
-	$message = "Hello ".get_facilitator_name($email, NAME_FORMAT_FIRST_NAME_FIRST)."\r\n";
-	$message .= "You are recieving this message because an account has been created for you on the CICE Scheduler.\r\n";
-	$message .= "On this site, you can access your latest schedule as it's updated.\r\n";
-	$message .= "Your login email is: ".$email."\r\n";
-	$message .= "Your password is: ".$password."\r\n";
-	$message .= "Please note, this password is case-sensitive. We suggest you immediately change your password to something more memorable as soon as possible.\r\n";
-	$message .= "Sincerely, Me.";
+	if (EMAIL_ENABLED)
+	{
+		$message = "Hello ".get_facilitator_name($email, NAME_FORMAT_FIRST_NAME_FIRST)."\r\n";
+		$message .= "You are recieving this message because an account has been created for you on the CICE Scheduler.\r\n";
+		$message .= "On this site, you can access your latest schedule as it's updated.\r\n";
+		$message .= "Your login email is: ".$email."\r\n";
+		$message .= "Your password is: ".$password."\r\n";
+		$message .= "Please note, this password is case-sensitive. We suggest you immediately change your password to something more memorable as soon as possible.\r\n";
+		$message .= "Sincerely, Me.";
 
-	return mail($email, "Your New Account on the CICE Scheduler", $message, "From: no-reply@durhamcollege.ca\r\n" );
+		return mail($email, "Your New Account on the CICE Scheduler", $message, "From: no-reply@durhamcollege.ca\r\n" );
+	}
+	else
+		return false;
 }

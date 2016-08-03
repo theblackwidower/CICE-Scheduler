@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 				if ($random_password)
 				{
 					$result .= " with random password";
-					if (EMAIL_ENABLED && email_password($email, $new_password))
+					if (email_password($email, $new_password))
 						$result = ".<br />Password has been emailed to user.";
 					else
 						$result .= ": <em>".$new_password."</em>";
