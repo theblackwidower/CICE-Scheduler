@@ -50,11 +50,6 @@
 	/*83x54*/
 }
 
-.timetable tr:last-child td
-{
-	text-align: left;
-}
-
 .timetable tr td:empty
 {
 	background-color: #E2E2E2;

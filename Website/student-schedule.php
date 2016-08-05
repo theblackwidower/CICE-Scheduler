@@ -34,7 +34,7 @@ else
 ?>
 	<h2><?php echo format_name($first_name, $last_name, NAME_FORMAT_FIRST_NAME_FIRST); ?><br />Full Schedule</h2>
 	<h3><?php echo get_semester_date($semester_id); ?></h3>
-	<?php echo build_timetable(START_SCHEDULE, END_SCHEDULE, $schedule, $schedule_links); ?>
+	<?php echo build_timetable($schedule, $schedule_links); ?>
 	<?php echo display_registration_ul($registration_list, $student_id); ?>
 	<h4><a href="student-schedule-add.php?id=<?php echo urlencode($student_id); ?>">Add Class</a></h4>
 <?php include "modules/footer.php";

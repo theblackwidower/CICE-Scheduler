@@ -43,13 +43,14 @@ function build_sidebar($sidebar_data, $source)
 
 /*
 build_timetable:
-start_schedule: Time (24h) to start schedule
-end_schedule: Time (24h) to end schedule
 contents: schedule data in associative array
 include_link: code for which link to include in timetable cells
+start_schedule: Time (24h) to start schedule
+end_schedule: Time (24h) to end schedule
 To build a timetable for display
 */
-function build_timetable($start_schedule, $end_schedule, $contents, $include_link = TT_LINK_NONE)
+function build_timetable($contents, $include_link = TT_LINK_NONE,
+		$start_schedule = START_SCHEDULE, $end_schedule = END_SCHEDULE)
 {
 	$table = array();
 	$days = get_all_days();

@@ -28,6 +28,6 @@ else
 ?>
 	<h3><a href="class-list.php?code=<?php echo urlencode($course_code); ?>"><?php echo $course_code; ?></a></h3>
 	<h4><?php echo get_course_name($course_code).(($professor_id != "")?'<br />Taught by: '.get_professor_name($professor_id, NAME_FORMAT_FIRST_NAME_FIRST):''); ?></h4>
-	<?php echo build_timetable(START_SCHEDULE, END_SCHEDULE, $schedule, TT_LINK_CLASS_TIME_DELETE); ?>
+	<?php echo build_timetable($schedule, TT_LINK_CLASS_TIME_DELETE); ?>
 	<h4><a href="class-time-add.php?crn=<?php echo urlencode($course_rn); ?>">Add class time</a></h4>
 <?php include "modules/footer.php";
