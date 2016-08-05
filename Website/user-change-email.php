@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			session_unset();
 			session_destroy();
 			session_start();
-			set_session_message("Email successfully updated. Please login with new email.");
+			set_session_message("Email successfully updated to <em>".$new_email."</em>. Please login with new email.");
 			header("Location: login.php");
 		}
 		else
