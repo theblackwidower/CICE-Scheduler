@@ -91,6 +91,13 @@
 	text-indent: 2em;
 }
 
+.popup_casing>.popup_box ul
+{
+	text-align: left;
+	margin-left: 1em;
+	line-height: 120%;
+}
+
 .popup_casing>.popup_box h4
 {
 	border-bottom: 1px solid black;
