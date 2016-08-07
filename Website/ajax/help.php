@@ -293,68 +293,134 @@ switch ($file)
 
 	case 'facilitator-add.php':
 		?>
-		<h3></h3>
+		<h3>Add Facilitator</h3>
 		<p>
-
+			To add a new facilitator, enter their email address, and their first and
+			last names. Email address will be the same email they'll login with, and
+			if they're also registered as a professor, should match the email in their
+			professor record.
+		</p>
+		<p>
+			If the email address is not currently assigned to a registered user, a new
+			user account will be created. Otherwise the facilitator record will be
+			paired with the pre-existing user.
 		</p>
 		<?php
 		break;
 
 	case 'facilitator-edit.php':
 		?>
-		<h3></h3>
+		<h3>Edit Facilitator</h3>
 		<p>
-
+			Here, you can change the name of a registered facilitator, or activate or
+			deactivate their record.
+		</p>
+		<p>
+			If a facilitator is deactivated, they will no longer show up in search.
+			Only deactivate a facilitator if they are no longer available to
+			facilitate classes.
+		</p>
+		<p>
+			If you wish to reactivate a facilitator, just select the 'Active'
+			checkbox, and click 'Update.'
 		</p>
 		<?php
 		break;
 
 	case 'facilitator-inactive.php':
 		?>
-		<h3></h3>
+		<h3>Inactive Facilitators</h3>
 		<p>
-
+			Here, all inactive facilitators are listed.
+		</p>
+		<p>
+			If you wish to reactivate a deactivated facilitator, click on 'Edit
+			Record' and select the 'Active' checkbox before clicking 'Update.'
 		</p>
 		<?php
 		break;
 
 	case 'facilitator-list.php':
 		?>
-		<h3></h3>
+		<h3>List Facilitators</h3>
 		<p>
-
+			All facilitators that are currently active are listed here.
+		</p>
+		<p>
+			You can search through the list by typing a term in the search box. This
+			will search by first or last name, displaying the first
+			<?php echo MAX_SEARCH_RESULT; ?> results.
+		</p>
+		<p>
+			You can also scroll through, page by page,
+			<?php echo MAX_RESULTS_PER_PAGE; ?> results at a time.
 		</p>
 		<?php
 		break;
 
 	case 'facilitator-schedule.php':
 		?>
-		<h3></h3>
+		<h3>Facilitator Schedule</h3>
 		<p>
-
+			<?php if (ROLE_ADMIN == get_logged_in_role() ||
+								ROLE_DATA_ENTRY == get_logged_in_role()) {?>
+				Here, you will see a facilitator's entire schedule, showing the classes
+				they're assigned to facilitate, and the students they're assigned to.
+				Any classes they teach may also be displayed here, if applicable.
+				<?php if (ROLE_ADMIN == get_logged_in_role()) {?>
+					</p>
+					<p>
+						If you wish to alter a facilitator's class assignments, click the
+						'Edit' link in the appropriate timetable block.
+				<?php }?>
+			<?php } else if (ROLE_FACILITATOR == get_logged_in_role()) {?>
+				Here you can see your entire schedule, containing classes you teach,
+				classes where you're assigned to facilitate, and the students you're
+				assigned to.
+			</p>
+			<p>
+				If you find any conflict, issues, or problems, contact
+				<a href="mailto:<?php echo ADMIN_CONTACT;?>"><?php echo ADMIN_NAME;?></a>
+				as soon as possible.
+			<?php }?>
+		</p>
+		<p>
+			Each timetable block contains, in order:
+			<ul>
+				<li>Course Code</li>
+				<li>CRN</li>
+				<li>Campus Name</li>
+				<li>Room Number</li>
+				<li>Professor's Name</li>
+				<li>Students assigned (if applicable)</li>
+			</ul>
 		</p>
 		<?php
 		break;
 
 	case 'index.php':
 		?>
-		<h3></h3>
+		<h3>Welcome to the CICE Scheduler</h3>
 		<p>
-
+			Please login to access the various features of the CICE Scheduler.
 		</p>
 		<?php
 		break;
 
 	case 'login.php':
 		?>
-		<h3></h3>
+		<h3>Login</h3>
 		<p>
-
+			Enter your email address, and password to access the CICE Scheduler. If
+			you have forgotten your password, or are having any kind of trouble
+			logging in, please contact
+			<a href="mailto:<?php echo ADMIN_CONTACT;?>"><?php echo ADMIN_NAME;?></a>
+			and ask to have your password reset.
 		</p>
 		<?php
 		break;
 
-	case 'professor-add.php':
+	case 'professor-add.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -363,7 +429,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'professor-edit.php':
+	case 'professor-edit.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -372,7 +438,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'professor-inactive.php':
+	case 'professor-inactive.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -381,7 +447,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'professor-list.php':
+	case 'professor-list.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -390,7 +456,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'room-add.php':
+	case 'room-add.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -399,7 +465,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'room-list.php':
+	case 'room-list.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -408,7 +474,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'schedule-build.php':
+	case 'schedule-build.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -417,7 +483,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'schedule-class.php':
+	case 'schedule-class.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -426,7 +492,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'schedule-list.php':
+	case 'schedule-list.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -435,7 +501,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'schedule-students.php':
+	case 'schedule-students.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -444,7 +510,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'student-add.php':
+	case 'student-add.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -453,7 +519,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'student-edit.php':
+	case 'student-edit.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -462,7 +528,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'student-inactive.php':
+	case 'student-inactive.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -471,7 +537,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'student-list.php':
+	case 'student-list.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -480,7 +546,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'student-register.php':
+	case 'student-register.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -489,7 +555,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'student-schedule-add.php':
+	case 'student-schedule-add.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -498,7 +564,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'student-schedule-delete.php':
+	case 'student-schedule-delete.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -507,7 +573,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'student-schedule.php':
+	case 'student-schedule.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -516,7 +582,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'student-search.php':
+	case 'student-search.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -525,7 +591,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'user-add.php':
+	case 'user-add.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -536,23 +602,41 @@ switch ($file)
 
 	case 'user-change-email.php':
 		?>
-		<h3></h3>
+		<h3>Change Email</h3>
 		<p>
-
+			Enter your new email address to change it.
+		</p>
+		<p>
+			If you are a facilitator who also teaches classes, please be aware that
+			changing your email could cause serious problems, as the records of any
+			classes you teach could become disconnected from your account. This could
+			result in major schedule conflicts. Please be sure to alert
+			<a href="mailto:<?php echo ADMIN_CONTACT;?>"><?php echo ADMIN_NAME;?></a>
+			to the change, to prevent any sort of conflicts or errors.
 		</p>
 		<?php
 		break;
 
 	case 'user-change-password.php':
 		?>
-		<h3></h3>
+		<h3>Change Password</h3>
 		<p>
-
+			<?php if (require_password_change()) {?>
+				You are required to change your password to use the CICE Scheduler.
+				Please enter in a new password, and confirm it.
+			<?php } else {?>
+				To change your password, please enter your old password, your new
+				password, and confirm your new password.
+			<?php }?>
+		</p>
+		<p>
+			Your new password must be a minimum of <?php echo MIN_PASSWORD_LENGTH;?>
+			characters long.
 		</p>
 		<?php
 		break;
 
-	case 'user-list.php':
+	case 'user-list.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -561,7 +645,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'user-password-reset.php':
+	case 'user-password-reset.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -570,7 +654,7 @@ switch ($file)
 		<?php
 		break;
 
-	case 'user-role.php':
+	case 'user-role.php': //TODO: Write incomplete help file
 		?>
 		<h3></h3>
 		<p>
@@ -592,9 +676,10 @@ switch ($file)
 		?>
 		<h3>401 Error</h3>
 		<p>
-			You attempted to access a page you are not authorized to access. If you think you should
-			be able to access this page, you may not be using the right user account. To fix this, log out and
-			log back in. If you're still experiencing problems, contact server administration.
+			You attempted to access a page you are not authorized to access. If you
+			think you should be able to access this page, you may not be using the
+			right user account. To fix this, log out and log back in. If you're still
+			experiencing problems, contact server administration.
 		</p>
 		<?php
 		break;
@@ -603,8 +688,9 @@ switch ($file)
 		?>
 		<h3>403 Error</h3>
 		<p>
-			You attempted to access a resource you are not authorized to access, likely a directory listing.
-			If you think this is in error, contact server administration.
+			You attempted to access a resource you are not authorized to access,
+			likely a directory listing. If you think this is in error, contact server
+			administration.
 		</p>
 		<?php
 		break;
@@ -613,7 +699,8 @@ switch ($file)
 		?>
 		<h3>404 Error</h3>
 		<p>
-			File not found. You might have typed in a non-existant URL, or clicked a broken link.
+			File not found. You might have typed in a non-existant URL, or clicked a
+			broken link.
 		</p>
 		<?php
 		break;
