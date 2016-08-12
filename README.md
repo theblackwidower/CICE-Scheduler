@@ -18,7 +18,7 @@ Currently, this function is a work in progress, as not all functions have a 'hel
 
 ## Installation
 
-This application is to be run on an Apache Server, running PHP, with a PostgreSQL back-end. PHP should also be setup to access an SMTP server for the automated password email function; but this is not mandatory.
+This application is to be run on an Apache Server (v2.4 or later), running PHP (v5.6 or later), with a PostgreSQL (v9.4 or later) back-end. PHP should also be setup to access an SMTP server for the automated password email function; but this is not mandatory.
 
 ### PostgreSQL setup
 
