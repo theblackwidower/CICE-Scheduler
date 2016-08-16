@@ -39,6 +39,8 @@ GRANT ALL ON ALL TABLES IN SCHEMA public TO cice;
 GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO cice;
 ```
 
+As an alternative, you can set the main user account as database owner, and run the setup scripts from the same account. This'll set the main user account as owner of all tables and by doing this, you will grant full access to all aspects of database maintenance to the web interface, including database vacuuming. If you do this, be sure to enable vacuuming in the constants.php file, as explained below.
+
 ### Enable backup function
 
 To allow the built-in backup function to run, the webserver needs direct access to PostgreSQL through separate user account called 'apache'. It must also be granted full read access. These SQL commands are all that are needed:
@@ -72,6 +74,8 @@ Open modules/constants.php and change the SITE_FOLDER constant to match whatever
 In this file, you can also enable the email function by changing EMAIL_ENABLED to true. This will allow the system to automatically send new users their account passwords.
 
 Next, change ADMIN_NAME and ADMIN_CONTACT to match the name and email address of the main admin user. Users will be directed to this email address to send messages regarding timetable conflicts, errors, and discrepancies.
+
+If the main database user account is set up as owner of all tables in the database, you can also set ALLOW_VACUUMING to true, allowing database vacuuming to be performed from the Administration page. However, this feature is not mandatory for normal operation.
 
 Finally, open modules/dblogin.php and edit the data within to match the PostgreSQL database settings, and user information.
 

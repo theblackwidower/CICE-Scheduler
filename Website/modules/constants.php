@@ -13,6 +13,11 @@ define("SITE_URL", 'http://twilight.noprestige.com/cice/');
 define("ADMIN_NAME", 'Elizabeth Campbell');
 define("ADMIN_CONTACT", 'elizabeth.campbell@durhamcollege.ca');
 
+//Vacuuming should only be enabled if the main user is set up as the owner of
+//all database tables. Since this is not neccessary for normal operation, it is
+//disabled by default.
+define("ALLOW_VACUUMING", false);
+
 define("START_SCHEDULE", 8); // 24-hour clock, 8am
 define("END_SCHEDULE", 18);  // 24-hour clock, 6pm
 

@@ -58,9 +58,11 @@ switch ($file)
 				name.
 			</p>
 			<h4>Database Maintenance</h4>
-			<p>
-				There are two basic features in Database Maintenance.
-			</p>
+			<?php if (ALLOW_VACUUMING) {?>
+				<p>
+					There are two basic features in Database Maintenance.
+				</p>
+			<?php } ?>
 			<h5>Backups</h5>
 			<p>
 				Database backups should be performed regularly. In most frequently-used
@@ -78,34 +80,36 @@ switch ($file)
 				These backup files can be saved to your hard drive, and contain all data
 				within the system.
 			</p>
-			<h5>Vacuum</h5>
-			<p>
-				The 'Vacuum' and 'Full Vacuum' buttons allow for a maintenance function
-				that can be used to free space, and speed up the system overall.
-			</p>
-			<p>
-				A basic vacuum frees up space that has been left behind by deleted
-				records. It also updates the database's own internal census, and allows
-				it to operate more efficiently.
-			</p>
-			<p>
-				A full vacuum also frees up space left behind by deleted records, but is
-				much more through, and therefore more time-consuming than the basic
-				vacuum. While a full vacuum is running, no data within the system can be
-				changed, which is why it should only be run when no one else is using
-				it.
-			</p>
-			<p>
-				A basic vacuum can be run once a week to clean up the internals of the
-				system. A full vacuum should be run much more sparingly, around once or
-				twice a year.
-			</p>
-			<p>
-				Neither operation is mandatory, as the database software itself should
-				run it's own vacuum automatically when necessary. But if it doesn't, it
-				can be a good idea to run it on your own.
-			</p>
-		<?php }
+			<?php if (ALLOW_VACUUMING) {?>
+				<h5>Vacuum</h5>
+				<p>
+					The 'Vacuum' and 'Full Vacuum' buttons allow for a maintenance function
+					that can be used to free space, and speed up the system overall.
+				</p>
+				<p>
+					A basic vacuum frees up space that has been left behind by deleted
+					records. It also updates the database's own internal census, and allows
+					it to operate more efficiently.
+				</p>
+				<p>
+					A full vacuum also frees up space left behind by deleted records, but is
+					much more through, and therefore more time-consuming than the basic
+					vacuum. While a full vacuum is running, no data within the system can be
+					changed, which is why it should only be run when no one else is using
+					it.
+				</p>
+				<p>
+					A basic vacuum can be run once a week to clean up the internals of the
+					system. A full vacuum should be run much more sparingly, around once or
+					twice a year.
+				</p>
+				<p>
+					Neither operation is mandatory, as the database software itself should
+					run it's own vacuum automatically when necessary. But if it doesn't, it
+					can be a good idea to run it on your own.
+				</p>
+			<?php }
+		}
 		break;
 
 	case 'class-add.php':

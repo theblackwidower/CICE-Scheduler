@@ -115,7 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 				}
 			}
 		}
-		else if ($section_id == MAINTENANCE)
+		else if (ALLOW_VACUUMING && $section_id == MAINTENANCE)
 		{
 			if ($_POST['operation'] == FULL_VACUUM)
 			{
@@ -203,12 +203,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 				<!--<a href="backup-database.php?t=full">Download Complete Database Backup</a><br />
 				<a href="backup-database.php?t=schema">Download Schema Backup</a><br />-->
 				<a href="backup-database.php?t=data">Download Backup File</a>
-			</div>
-			<br />
-			<input id="operation" name="operation" type="hidden" value="" />
-			<input type="submit" value="Vacuum" onclick="document.getElementById(\'operation\').value=\''.STANDARD_VACUUM.'\';" />
-			<input type="submit" value="Full Vacuum" onclick="document.getElementById(\'operation\').value=\''.FULL_VACUUM.'\';" />
-		</form>';
+			</div>';
+			if (ALLOW_VACUUMING)
+			{
+				echo '
+				<br />
+				<input id="operation" name="operation" type="hidden" value="" />
+				<input type="submit" value="Vacuum" onclick="document.getElementById(\'operation\').value=\''.STANDARD_VACUUM.'\';" />
+				<input type="submit" value="Full Vacuum" onclick="document.getElementById(\'operation\').value=\''.FULL_VACUUM.'\';" />';
+			}
+		echo '</form>';
 	} ?>
 </div>
 <?php include "modules/footer.php";
