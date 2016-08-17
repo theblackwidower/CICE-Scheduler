@@ -24,8 +24,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$email = null;
 	else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 		$result .= '<em>"'.$email.'"</em> is not a valid email address.<br />';
-	else if (professor_email_exists($email))
-		$result .= '<em>"'.$email.'"</em> is already registered to a professor.<br />';
+	else
+	{
+		$email = strtolower($email);
+		if (professor_email_exists($email))
+			$result .= '<em>"'.$email.'"</em> is already registered to a professor.<br />';
+	}
 
 	if ($result == "")
 	{

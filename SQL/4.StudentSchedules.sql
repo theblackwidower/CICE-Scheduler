@@ -25,7 +25,8 @@ CREATE TABLE tbl_professors(
 	first_name VARCHAR(30) NOT NULL,
 	last_name VARCHAR(30) NOT NULL,
 	email VARCHAR(255) UNIQUE,
-	is_active BOOLEAN NOT NULL DEFAULT true
+	is_active BOOLEAN NOT NULL DEFAULT true,
+	CHECK (LOWER(email) = email)
 );
 
 CREATE TABLE tbl_classes(
