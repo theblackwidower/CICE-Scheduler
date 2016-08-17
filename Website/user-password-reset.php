@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 	{
 		$result .= "User <em>".$email."</em> account reset with temporary password";
 		if (email_password($email, $new_password))
-			$result = ".<br />Password has been emailed to user.";
+			$result .= ".<br />Password has been emailed to user.";
 		else
 			$result .= ": <em>".$new_password."</em>";
 		set_password_change_force($email, 'true');

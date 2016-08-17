@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 				$result .= "User account created with temporary password";
 				$is_user = true;
 				if (email_password($email, $password))
-					$result = ".<br />Password has been emailed to facilitator.";
+					$result .= ".<br />Password has been emailed to facilitator.";
 				else
 					$result .= ": <em>".$password."</em>";
 			}
@@ -53,20 +53,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		if ($is_user)
 		{
 			if (facilitator_exists($email))
-				$result = "<br />Email is already registered to facilitator.";
+				$result .= "<br />Email is already registered to facilitator.";
 			else
 			{
 				$code = add_facilitator($email, $first_name, $last_name);
 				if ($code === true)
 				{
-					$result = "<br />Facilitator <em>".format_name($first_name, $last_name, NAME_FORMAT_FIRST_NAME_FIRST)."</em> successfully added.";
+					$result .= "<br />Facilitator <em>".format_name($first_name, $last_name, NAME_FORMAT_FIRST_NAME_FIRST)."</em> successfully added.";
 
 					$email = "";
 					$first_name = "";
 					$last_name = "";
 				}
 				else
-					$result = "<br />Unknown error occured: ".$code;
+					$result .= "<br />Unknown error occured: ".$code;
 			}
 		}
 	}
