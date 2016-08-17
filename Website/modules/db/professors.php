@@ -112,7 +112,7 @@ first_name: professor's first name
 last_name: professor's last name
 email: professor's email
 adds new professor to database
-returns true if successful
+returns id of new professor if successful
 */
 function add_professor($first_name, $last_name, $email)
 {
