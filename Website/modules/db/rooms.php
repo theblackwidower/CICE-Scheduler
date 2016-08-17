@@ -8,9 +8,10 @@ searches for room by number
 function search_rooms($search, $max_results = MAX_SEARCH_RESULT)
 {
 	global $conn;
-	$stmt = $conn->prepare('SELECT room_number, campus_name FROM tbl_rooms, tbl_campuses
-			WHERE room_number ILIKE :search AND tbl_rooms.campus_id = tbl_campuses.campus_id
-			ORDER BY tbl_rooms.campus_id, room_number LIMIT :max_results');
+	$stmt = $conn->prepare("SELECT room_number, campus_name FROM tbl_rooms, tbl_campuses
+			WHERE REPLACE(room_number, ' ', '') ILIKE REPLACE(:search, ' ', '')
+			AND tbl_rooms.campus_id = tbl_campuses.campus_id
+			ORDER BY tbl_rooms.campus_id, room_number LIMIT :max_results");
 	$stmt->bindValue(':search', '%'.$search.'%'); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);

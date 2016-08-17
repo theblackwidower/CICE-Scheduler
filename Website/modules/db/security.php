@@ -135,13 +135,14 @@ function get_all_users($max_results = MAX_SEARCH_RESULT)
 search_users:
 search: term to search for
 max_results: maximum results to return
-searches for user by email address
+searches for user by email address or role description
 */
 function search_users($search, $max_results = MAX_SEARCH_RESULT)
 {
 	global $conn;
-	$stmt = $conn->prepare('SELECT email, role_id
-			FROM tbl_users WHERE email ILIKE :search ORDER BY email LIMIT :max_results');
+	$stmt = $conn->prepare('SELECT email, tbl_users.role_id
+			FROM tbl_users, tbl_role WHERE tbl_users.role_id = tbl_role.role_id
+			AND (email ILIKE :search OR description ILIKE :search) ORDER BY email LIMIT :max_results');
 	$stmt->bindValue(':search', '%'.$search.'%'); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
