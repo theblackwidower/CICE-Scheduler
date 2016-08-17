@@ -6,12 +6,16 @@ include "modules/header.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST")
 {
-	$old_email = trim($_POST["old_email"]);
+	$old_email = get_logged_in_email();
 	$new_email = trim($_POST["new_email"]);
 
 	$result = "";
 
-	if ($old_email == "" || !user_exists($old_email))
+	if ($old_email != trim($_POST["old_email"]));
+		$result .= 'Error of inconsistancy found. You tried to change the email for <em>"'.
+				trim($_POST["old_email"]).'"</em> but are logged in as <em>"'.
+				$old_email.'"</em>. You might want to try again.<br />';
+	else if ($old_email == "" || !user_exists($old_email))
 		$result .= "User record cannot be found.<br />";
 
 	if ($new_email == "")
