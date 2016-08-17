@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
 	$result = "";
 
-	if ($old_email != trim($_POST["old_email"]));
+	if ($old_email != trim($_POST["old_email"]))
 		$result .= 'Error of inconsistancy found. You tried to change the email for <em>"'.
 				trim($_POST["old_email"]).'"</em> but are logged in as <em>"'.
 				$old_email.'"</em>. You might want to try again.<br />';
