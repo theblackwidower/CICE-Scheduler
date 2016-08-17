@@ -26,7 +26,14 @@ else
 	$course_rn = "";
 
 	if (isset($_GET['course']))
+	{
 		$course_code = $_GET['course'];
+		if (!course_exists($course_code, $semester_id))
+		{
+			set_session_message("<em>".$course_code."</em> is not registered in the system.");
+			redirect('course-list.php');
+		}
+	}
 	else
 		$course_code = "";
 

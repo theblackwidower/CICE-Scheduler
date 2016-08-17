@@ -57,9 +57,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		{
 			$result = "Class time successfully added.";
 
+			if (!isset($_GET['crn']))
+				$course_rn = "";
+
 			$room_number = "";
+			$day_id = "";
 			$start_time = START_SCHEDULE;
 			$end_time = END_SCHEDULE;
+
 		}
 		else
 			$result = "Unknown error occured: ".$code;
@@ -69,35 +74,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 }
 else
 {
+	$semester_id = get_default_semester();
+
 	if (isset($_GET['crn']))
 	{
-		$semester_id = get_default_semester();
 		$course_rn = $_GET['crn'];
-		if (class_rn_exists($course_rn, $semester_id))
-		{
-			$room_number = "";
-			$day_id = "";
-			$start_time = START_SCHEDULE;
-			$end_time = START_SCHEDULE + MAX_CLASS_LENGTH;
-		}
-		else
+		if (!class_rn_exists($course_rn, $semester_id))
 		{
 			set_session_message("<em>".$course_rn."</em> is not registered in the system.");
 			redirect('course-list.php');
 		}
 	}
 	else
-	{
-		set_session_message("Please select a class.");
-		redirect('course-list.php');
-	}
+		$course_rn = "";
+
+	$room_number = "";
+	$day_id = "";
+	$start_time = START_SCHEDULE;
+	$end_time = START_SCHEDULE + MAX_CLASS_LENGTH;
 }
 popup_casing('room');
 	form_open_post(); ?>
 		<ul>
 			<?php
-			form_back_button('class-schedule.php?crn='.urlencode($course_rn));
-			form_read_only('course_rn', 'CRN', $course_rn);
+			if (isset($_GET['crn']))
+			{
+				form_back_button('class-schedule.php?crn='.urlencode($course_rn));
+				form_read_only('course_rn', 'CRN', $course_rn);
+			}
+			else
+				form_autocomplete_box('course_rn', 'CRN', 'crn', $course_rn);
+
 			form_read_only('semester_id', 'Semester ID', $semester_id);
 			?>
 		</ul>

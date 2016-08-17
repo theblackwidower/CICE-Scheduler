@@ -58,9 +58,10 @@ Copyright (C) 2016: T Duke Perry (http://noprestige.com)
 								'Add New Course' => 'course-add.php',
 								'List Courses' => 'course-list.php',
 								'Add Class' => 'class-add.php',
+								'Add Class Time' => 'class-time-add.php',
 								'Inactive Courses' => 'course-inactive.php',
 								'class-list.php', 'class-edit.php', 'class-schedule.php',
-								'class-time-add.php', 'class-time-delete.php', 'course-edit.php'),
+								'class-time-delete.php', 'course-edit.php'),
 							'Professor and Room Data' => array(
 								'Add New Professor' => 'professor-add.php',
 								'List Professors' => 'professor-list.php',
