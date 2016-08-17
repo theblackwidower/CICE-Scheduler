@@ -16,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$result .= "Please enter an email address.<br />";
 	else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 		$result .= '<em>"'.$email.'"</em> is not a valid email address.<br />';
+	else
+		$email = strtolower($email);
 
 	if ($first_name == "")
 		$result .= "Please enter a first name.<br />";

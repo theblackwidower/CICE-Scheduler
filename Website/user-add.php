@@ -19,6 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$result .= "Please enter an email address.<br />";
 	else if (!filter_var($email, FILTER_VALIDATE_EMAIL))
 		$result .= '<em>"'.$email.'"</em> is not a valid email address.<br />';
+	else
+		$email = strtolower($email);
 
 	if (strcmp($password, $confirm_password) !== 0)
 		$result .= "New passwords must match.";

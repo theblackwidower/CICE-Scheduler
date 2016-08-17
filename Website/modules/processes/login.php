@@ -8,6 +8,7 @@ else if ($password == "")
 	$result = "Please enter a password.";
 else
 {
+	$email = strtolower($email);
 	$login_result = login($email, $password);
 	if ($login_result === 0)
 		$result = "Invalid login or password.";

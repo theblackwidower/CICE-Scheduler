@@ -24,6 +24,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 		$result .= '<em>"'.$new_email.'"</em> is not a valid email address.<br />';
 	else if (user_exists($new_email))
 		$result .= '<em>"'.$new_email.'"</em> is already registered to another user.<br />';
+	else
+		$email = strtolower($email);
 
 	if ($result == "")
 	{
