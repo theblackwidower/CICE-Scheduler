@@ -32,7 +32,7 @@ function search_registered_students($semester_id, $search, $max_results = MAX_SE
 		tbl_students.student_id = tbl_student_classes.student_id AND '.SQL_NAME_SEARCH.' AND is_active
 		ORDER BY last_name, first_name, student_id LIMIT :max_results');
 	$stmt->bindValue(':semester', $semester_id);
-	$stmt->bindValue(':search', $search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
 }
@@ -70,7 +70,7 @@ function search_unregistered_students($semester_id, $search, $max_results = MAX_
 		(SELECT student_id FROM tbl_student_classes WHERE semester_id = :semester) AND
 		'.SQL_NAME_SEARCH.' AND is_active ORDER BY last_name, first_name, student_id LIMIT :max_results');
 	$stmt->bindValue(':semester', $semester_id);
-	$stmt->bindValue(':search', $search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
 }
@@ -87,7 +87,7 @@ function search_students($search, $max_results = MAX_SEARCH_RESULT)
 	$stmt = $conn->prepare('SELECT student_id, first_name, last_name FROM
 		tbl_students WHERE '.SQL_NAME_SEARCH.' AND is_active ORDER BY last_name, first_name, student_id
 		LIMIT :max_results');
-	$stmt->bindValue(':search', $search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
 }
@@ -104,7 +104,7 @@ function search_inactive_students($search, $max_results = MAX_SEARCH_RESULT)
 	$stmt = $conn->prepare('SELECT student_id, first_name, last_name FROM
 		tbl_students WHERE '.SQL_NAME_SEARCH.' AND NOT is_active ORDER BY last_name, first_name, student_id
 		LIMIT :max_results');
-	$stmt->bindValue(':search', $search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
 }

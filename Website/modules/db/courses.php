@@ -37,10 +37,10 @@ function search_inactive_courses($search, $max_results = MAX_SEARCH_RESULT)
 {
 	global $conn;
 	$stmt = $conn->prepare("SELECT course_code, course_name FROM tbl_courses WHERE NOT is_active AND
-		(REPLACE(course_code, ' ', '') ILIKE REPLACE(:search, ' ', '')
+		(REPLACE(course_code, ' ', '') ILIKE '%' || REPLACE(:search, ' ', '') || '%'
 			OR course_name ILIKE :search)
 			ORDER BY course_code LIMIT :max_results");
-	$stmt->bindValue(':search', '%'.$search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
 }
@@ -55,10 +55,10 @@ function search_courses($search, $max_results = MAX_SEARCH_RESULT)
 {
 	global $conn;
 	$stmt = $conn->prepare("SELECT course_code, course_name FROM tbl_courses WHERE is_active AND
-		(REPLACE(course_code, ' ', '') ILIKE REPLACE(:search, ' ', '')
+		(REPLACE(course_code, ' ', '') ILIKE '%' || REPLACE(:search, ' ', '') || '%'
 			OR course_name ILIKE :search)
 			ORDER BY course_code LIMIT :max_results");
-	$stmt->bindValue(':search', '%'.$search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
 }

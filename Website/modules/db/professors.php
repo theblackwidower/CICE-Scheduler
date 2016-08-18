@@ -41,7 +41,7 @@ function search_inactive_professors($search, $max_results = MAX_SEARCH_RESULT)
 	$stmt = $conn->prepare('SELECT professor_id, first_name, last_name, email
 			FROM tbl_professors WHERE NOT is_active AND '.SQL_NAME_SEARCH.
 			' ORDER BY last_name, first_name, professor_id LIMIT :max_results');
-	$stmt->bindValue(':search', $search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
 }
@@ -58,7 +58,7 @@ function search_professors($search, $max_results = MAX_SEARCH_RESULT)
 	$stmt = $conn->prepare('SELECT professor_id, first_name, last_name, email
 			FROM tbl_professors WHERE is_active AND '.SQL_NAME_SEARCH.
 			' ORDER BY last_name, first_name, professor_id LIMIT :max_results');
-	$stmt->bindValue(':search', $search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
 }

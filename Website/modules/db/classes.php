@@ -40,9 +40,9 @@ searches for classes by crn
 function search_class_rn($search, $semester_id, $max_results = MAX_SEARCH_RESULT)
 {
 	global $conn;
-	$stmt = $conn->prepare('SELECT course_rn, course_code FROM tbl_classes WHERE
-		course_rn ILIKE :search AND semester_id = :semester ORDER BY course_code, course_rn LIMIT :max_results');
-	$stmt->bindValue(':search', $search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt = $conn->prepare("SELECT course_rn, course_code FROM tbl_classes WHERE
+		course_rn ILIKE :search || '%' AND semester_id = :semester ORDER BY course_code, course_rn LIMIT :max_results");
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':semester', $semester_id);
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);

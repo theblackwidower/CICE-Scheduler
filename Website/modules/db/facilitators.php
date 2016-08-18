@@ -69,7 +69,7 @@ function search_facilitators($search, $max_results = MAX_SEARCH_RESULT)
 	$stmt = $conn->prepare('SELECT email, first_name, last_name
 			FROM tbl_facilitators WHERE '.SQL_NAME_SEARCH.
 			' AND is_active ORDER BY last_name, first_name, email LIMIT :max_results');
-	$stmt->bindValue(':search', $search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
 }
@@ -86,7 +86,7 @@ function search_inactive_facilitators($search, $max_results = MAX_SEARCH_RESULT)
 	$stmt = $conn->prepare('SELECT email, first_name, last_name
 			FROM tbl_facilitators WHERE '.SQL_NAME_SEARCH.
 			' AND NOT is_active ORDER BY last_name, first_name, email LIMIT :max_results');
-	$stmt->bindValue(':search', $search.'%'); //'%' is wildcard in PostgreSQL
+	$stmt->bindValue(':search', $search); //'%' is wildcard in PostgreSQL
 	$stmt->bindValue(':max_results', $max_results);
 	return execute_fetch_all($stmt);
 }
