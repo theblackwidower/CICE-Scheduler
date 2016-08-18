@@ -71,7 +71,7 @@ returns true if course exists in database
 function course_exists($course_code)
 {
 	global $conn;
-	$stmt = $conn->prepare('SELECT course_code FROM tbl_courses WHERE course_code = UPPER(:code)');
+	$stmt = $conn->prepare('SELECT course_code FROM tbl_courses WHERE course_code = :code');
 	$stmt->bindValue(':code', $course_code);
 	return execute_exists($stmt);
 }
@@ -86,7 +86,7 @@ returns true if successful
 function add_course($course_code, $course_name)
 {
 	global $conn;
-	$stmt = $conn->prepare('INSERT INTO tbl_courses(course_code, course_name) VALUES (UPPER(:code), :name)');
+	$stmt = $conn->prepare('INSERT INTO tbl_courses(course_code, course_name) VALUES (:code, :name)');
 	$stmt->bindValue(':code', $course_code);
 	$stmt->bindValue(':name', $course_name);
 	return execute_no_data($stmt);
@@ -100,7 +100,7 @@ returns name of course
 function get_course_name($course_code)
 {
 	global $conn;
-	$stmt = $conn->prepare('SELECT course_name FROM tbl_courses WHERE course_code = UPPER(:code)');
+	$stmt = $conn->prepare('SELECT course_name FROM tbl_courses WHERE course_code = :code');
 	$stmt->bindValue(':code', $course_code);
 	return execute_fetch_param($stmt, 'course_name');
 }
@@ -113,7 +113,7 @@ returns specified course in associative array
 function get_course($course_code)
 {
 	global $conn;
-	$stmt = $conn->prepare('SELECT course_name, is_active FROM tbl_courses WHERE course_code = UPPER(:code)');
+	$stmt = $conn->prepare('SELECT course_name, is_active FROM tbl_courses WHERE course_code = :code');
 	$stmt->bindValue(':code', $course_code);
 	return execute_fetch_one($stmt);
 }
@@ -147,7 +147,7 @@ function update_course($course_code, $course_name, $is_active)
 {
 	global $conn;
 	$stmt = $conn->prepare('UPDATE tbl_courses SET course_name = :name, is_active = :is_active
-		WHERE course_code = UPPER(:code)');
+		WHERE course_code = :code');
 	$stmt->bindValue(':code', $course_code);
 	$stmt->bindValue(':name', $course_name);
 	$stmt->bindValue(':is_active', $is_active);
