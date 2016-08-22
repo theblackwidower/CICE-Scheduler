@@ -77,6 +77,8 @@ Next, change ADMIN_NAME and ADMIN_CONTACT to match the name and email address of
 
 If the main database user account is set up as owner of all tables in the database, you can also set ALLOW_VACUUMING to true, allowing database vacuuming to be performed from the Administration page. However, this feature is not mandatory for normal operation.
 
+After this, open up .htaccess. There are eight ErrorDocument statements. Ensure they all point to the correct error message files by editing the subfolders. They should all match whatever was set as the SITE_FOLDER constant, followed by the numerical error code, and a '.php'.
+
 Finally, open modules/dblogin.php and edit the data within to match the PostgreSQL database settings, and user information.
 
 ### Final steps
