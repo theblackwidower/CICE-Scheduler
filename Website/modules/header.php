@@ -71,12 +71,12 @@ Copyright (C) 2016: T Duke Perry (http://noprestige.com)
 								'professor-edit.php'),
 							'Student Data' => array(
 								'Add New Student' => 'student-add.php',
-								'List Student Schedules' => 'student-list.php',
-								'Register Existing Student' => 'student-register.php',
+								'Registered Students' => 'student-list.php',
+								'Unregistered Students' => 'student-register.php',
 								'Search All Students' => 'student-search.php',
 								'Inactive Students' => 'student-inactive.php',
-								'student-edit.php', 'student-schedule.php',
-								'student-schedule-add.php', 'student-schedule-delete.php'));
+								'Register Student' => 'student-schedule-add.php',
+								'student-edit.php', 'student-schedule.php', 'student-schedule-delete.php'));
 						if (get_logged_in_role() == ROLE_ADMIN)
 						{
 							$sidebar['Facilitator Schedules'] = array(

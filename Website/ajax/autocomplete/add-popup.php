@@ -17,6 +17,8 @@ else if ($field == 'crn')
 	popup_casing('course');
 	popup_casing('professor');
 }
+else if ($field == 'student')
+	echo '<h2 class="popup_message">Add Student</h2>';
 ?>
 
 <form onsubmit="ajax_submit(this); return false;" onreset="reset_form(this); return false;">
@@ -48,6 +50,13 @@ else if ($field == 'crn')
 			echo '</ul><ul>';
 			form_text_box('course_rn', 'CRN', '');
 			form_autocomplete_box('professor_id', 'Professor (optional)', 'professor', '');
+		}
+		else if ($field == 'student')
+		{
+			form_text_box('student_id', 'Student ID', $student_id);
+			echo '</ul><ul>';
+			form_text_box('first_name', 'First Name', $first_name);
+			form_text_box('last_name', 'Last Name', $last_name);
 		}
 		?>
 	</ul>

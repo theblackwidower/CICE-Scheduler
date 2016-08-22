@@ -37,6 +37,13 @@ else if ($output["field"] == 'crn')
 	$id = $course_rn;
 	$display_name = $course_rn;
 }
+else if ($output["field"] == 'student')
+{
+	require '../../modules/processes/add-student.php';
+
+	$id = $student_id;
+	$display_name = $student_id;
+}
 
 if ($result === true)
 {

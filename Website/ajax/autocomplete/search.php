@@ -38,6 +38,14 @@ else if ($field == 'crn')
 	$subtitle_id = 'course_code';
 	$all_items = search_class_rn($search, get_default_semester(), MAX_AUTOCOMPLETE_RESULT);
 }
+else if ($field == 'student')
+{
+	$display_name = 'Student';
+	$value_id = 'student_id';
+	$title_id = 'student_id';
+	$subtitle_id = 'name';
+	$all_items = search_students($search, MAX_AUTOCOMPLETE_RESULT);
+}
 foreach ($all_items as $item)
 	display_autocomplete_item($item, $value_id, $title_id, $subtitle_id);
 

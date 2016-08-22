@@ -268,11 +268,17 @@ Output the results of each item in a search for form autocomplete.
 function display_autocomplete_item($item, $value_id, $title_id, $subtitle_id)
 {
 	$value = $item[$value_id];
+
 	if ($title_id == 'name')
 		$title = format_name($item['first_name'], $item['last_name'], NAME_FORMAT_LAST_NAME_FIRST);
 	else
 		$title = $item[$title_id];
-	$subtitle = $item[$subtitle_id];
+
+	if ($subtitle_id == 'name')
+		$subtitle = format_name($item['first_name'], $item['last_name'], NAME_FORMAT_LAST_NAME_FIRST);
+	else
+		$subtitle = $item[$subtitle_id];
+
 	echo '
 		<a href="#" onclick="complete(this, \''.$value.'\'); return false;"
 				onmouseover="auto_complete_mouse_selection(this)">

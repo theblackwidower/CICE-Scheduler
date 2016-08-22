@@ -31,6 +31,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 			if ($code === true)
 			{
 				$result = "Student successfully registered for <em>".$course_rn."</em>.";
+				if (!isset($_GET['id']))
+					$student_id = "";
+
 				$course_rn = '';
 			}
 			else
@@ -45,9 +48,6 @@ else
 	if (isset($_GET['id']))
 	{
 		$student_id = $_GET['id'];
-		$semester_id = get_default_semester();
-		$course_rn = '';
-
 		if (!student_exists($student_id))
 		{
 			set_session_message("<em>".$student_id."</em> is not registered in the system.");
@@ -55,17 +55,24 @@ else
 		}
 	}
 	else
-	{
-		set_session_message("Please select a student.");
-		redirect('student-search.php');
-	}
+		$student_id = "";
+
+	$semester_id = get_default_semester();
+	$course_rn = '';
 }
 popup_casing('crn');
+popup_casing('student');
 	form_open_post(); ?>
 		<ul>
 			<?php
-			form_back_button('student-schedule.php?id='.urlencode($student_id));
-			form_read_only('student_id', 'Student ID', $student_id);
+			if (isset($_GET['id']))
+			{
+				form_back_button('student-schedule.php?id='.urlencode($student_id));
+				form_read_only('student_id', 'Student ID', $student_id);
+			}
+			else
+				form_autocomplete_box('student_id', 'Student ID', 'student', $student_id);
+
 			form_read_only('semester_id', 'Semester ID', $semester_id);
 			?>
 		</ul>
