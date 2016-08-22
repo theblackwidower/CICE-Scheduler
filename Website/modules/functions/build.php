@@ -15,8 +15,6 @@ function build_sidebar($sidebar_data, $source)
 	$has_current = false;
 	foreach ($sidebar_data as $name => $address)
 	{
-		if (!is_string($name))
-			$name = '';
 		if (is_array($address))
 		{
 			$content = build_sidebar($address, $source);
@@ -32,10 +30,11 @@ function build_sidebar($sidebar_data, $source)
 		}
 		else if ($source == $address)
 		{
-			$result .= '<span class="current">'.$name.'</span>';
+			if(is_string($name))
+				$result .= '<span class="current">'.$name.'</span>';
 			$has_current = true;
 		}
-		else
+		else if(is_string($name))
 			$result .= '<a href="'.SITE_FOLDER.$address.'">'.$name.'</a>';
 	}
 	return array('output' => $result, 'current' => $has_current);

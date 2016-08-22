@@ -54,7 +54,6 @@ body
 	font-weight: bold;
 }
 
-#sidebar *:empty,
 #sidebar span:not(.open) *
 {
 	display: none;
