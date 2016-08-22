@@ -8,7 +8,7 @@ returns all active registered students in associative array
 function get_all_registered_students($semester_id, $max_results = MAX_SEARCH_RESULT)
 {
 	global $conn;
-	$stmt = $conn->prepare('SELECT tbl_students.student_id, first_name, last_name FROM
+	$stmt = $conn->prepare('SELECT DISTINCT tbl_students.student_id, first_name, last_name FROM
 		tbl_students, tbl_student_classes WHERE semester_id = :semester AND
 		tbl_students.student_id = tbl_student_classes.student_id AND is_active
 		ORDER BY last_name, first_name, student_id LIMIT :max_results');
@@ -27,7 +27,7 @@ searches for active registered students by name
 function search_registered_students($semester_id, $search, $max_results = MAX_SEARCH_RESULT)
 {
 	global $conn;
-	$stmt = $conn->prepare("SELECT tbl_students.student_id, first_name, last_name FROM
+	$stmt = $conn->prepare("SELECT DISTINCT tbl_students.student_id, first_name, last_name FROM
 		tbl_students, tbl_student_classes WHERE semester_id = :semester AND
 		tbl_students.student_id = tbl_student_classes.student_id AND
 		(".SQL_NAME_SEARCH." OR tbl_students.student_id ILIKE :search || '%') AND is_active
