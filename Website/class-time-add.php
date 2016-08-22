@@ -94,6 +94,7 @@ else
 	$end_time = START_SCHEDULE + MAX_CLASS_LENGTH;
 }
 popup_casing('room');
+popup_casing('crn');
 	form_open_post(); ?>
 		<ul>
 			<?php
