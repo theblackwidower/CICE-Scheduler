@@ -35,8 +35,11 @@ CREATE DATABASE "CICE_Scheduler";
 Run all eight SQL scripts in the SQL folder, in the numbered order, within the newly-created database. Then, grant all necessary permissions to the main user account using these commands:
 
 ```
-GRANT ALL ON ALL TABLES IN SCHEMA public TO cice;
-GRANT ALL ON ALL SEQUENCES IN SCHEMA public TO cice;
+GRANT SELECT, INSERT ON ALL TABLES IN SCHEMA public TO cice;
+GRANT DELETE ON tbl_class_times, tbl_schedule, tbl_assigned_students, tbl_student_classes TO cice;
+GRANT UPDATE ON tbl_classes, tbl_courses, tbl_facilitators, tbl_professors, tbl_users, tbl_students TO cice;
+REVOKE INSERT ON tbl_days, tbl_role FROM cice;
+GRANT USAGE ON ALL SEQUENCES IN SCHEMA public TO cice;
 ```
 
 As an alternative, you can set the main user account as database owner, and run the setup scripts from the same account. This'll set the main user account as owner of all tables and by doing this, you will grant full access to all aspects of database maintenance to the web interface, including database vacuuming. If you do this, be sure to enable vacuuming in the constants.php file, as explained below.
