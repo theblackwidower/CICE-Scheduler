@@ -113,6 +113,7 @@
 	width: 10em;
 	border: 2px solid black;
 	border-radius: 0 .5em .5em;
+	overflow-y: auto;
 }
 
 .auto_complete_box>span
@@ -131,17 +132,6 @@
 .auto_complete_box:empty
 {
 	display: none;
-}
-
-.auto_complete_box a:first-child
-{
-	border-top-right-radius: calc(.5em - 2px);
-}
-
-.auto_complete_box a:last-child
-{
-	border-bottom-left-radius: calc(.5em - 2px);
-	border-bottom-right-radius: calc(.5em - 2px);
 }
 
 .auto_complete_box>a
