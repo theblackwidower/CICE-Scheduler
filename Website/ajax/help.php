@@ -595,11 +595,32 @@ switch ($file)
 		<?php
 		break;
 
-	case 'user-add.php': //TODO: Write incomplete help file
+	case 'user-add.php':
 		?>
-		<h3></h3>
+		<h3>Add User Account</h3>
 		<p>
-
+			To add a new user account, enter their email address, and choose their
+			new role.
+		</p>
+		<p>
+			You can choose their initial password for them, or leave the password
+			fields blank, and they will be assigned a random password, which will be
+			<?php if (EMAIL_ENABLED) {?>
+				emailed to them immediately.
+			<?php } else {?>
+				provided to you once the account is created. You can then send it to the
+				new user by a method of your choosing at your earliest convinience.
+			<?php }?>
+		</p>
+		<p>
+			Passwords must be a minimum of <?php echo MIN_PASSWORD_LENGTH;?>
+			characters long.
+		</p>
+		<p>
+			You can also choose to force a password change at the user's first login,
+			or waive this requirement by deselecting the 'Force Password Change'
+			checkbox. It is reccommended that the new user change their password to
+			something memorable and unique.
 		</p>
 		<?php
 		break;
@@ -640,29 +661,65 @@ switch ($file)
 		<?php
 		break;
 
-	case 'user-list.php': //TODO: Write incomplete help file
+	case 'user-list.php':
 		?>
-		<h3></h3>
+		<h3>List User Accounts</h3>
 		<p>
+			All user accounts are listed here.
+		</p>
+		<p>
+			You can search through the list by typing a term in the search box. This
+			will search by user email and user role, displaying the first
+			<?php echo MAX_SEARCH_RESULT; ?> results.
+		</p>
+		<p>
+			You can also scroll through, page by page,
+			<?php echo MAX_RESULTS_PER_PAGE; ?> results at a time.
+		</p>
+		<?php
+		break;
+
+	case 'user-password-reset.php':
+		?>
+		<h3>Reset User Password</h3>
+		<p>
+			Click 'Yes' to reset the user's password. Click 'No' to go back.
+		</p>
+		<p>
+			The user's new password will either be randomly generated, or, if they are
+			connected to a facilitator record, it will be their last name and first
+			initial, with no accents, spaces or hyphens. The password will then be
+			<?php if (EMAIL_ENABLED) {?>
+				emailed to them immediately.
+			<?php } else {?>
+				provided to you once the reset is complete. You can then send it to the
+				new user by a method of your choosing at your earliest convinience.
+			<?php }?>
+
 
 		</p>
 		<?php
 		break;
 
-	case 'user-password-reset.php': //TODO: Write incomplete help file
+	case 'user-role.php':
 		?>
-		<h3></h3>
+		<h3>Edit User Role</h3>
 		<p>
-
+			From here you can change a user's role. There are four options available:
+			<ul>
+				<li>Facilitator: Can access the facilitator's current schedule.</li>
+				<li>Data Entry: Has access to slightly more advanced functions,
+					including listing of facilitators, and student schedules, for data
+					entry.</li>
+				<li>Administrator: Has full access to all data and site functions,
+					including the building of facilitator schedules, and management of
+					user accounts.</li>
+				<li>Disabled Account: User account is disabled, they cannot login, or
+					access any function on the site.</li>
+			</ul>
 		</p>
-		<?php
-		break;
-
-	case 'user-role.php': //TODO: Write incomplete help file
-		?>
-		<h3></h3>
 		<p>
-
+			Select the new user role, and click 'Update' to submit the change.
 		</p>
 		<?php
 		break;
