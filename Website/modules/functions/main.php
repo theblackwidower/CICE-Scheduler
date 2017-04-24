@@ -6,10 +6,13 @@ Redirect to different page.
 */
 function redirect($destination)
 {
-	ob_clean();
-	header("Location: ".$destination);
-	//close php document
-	exit;
+	if ($destination != $_SERVER['PHP_SELF'])
+	{
+		ob_clean();
+		header("Location: ".$destination);
+		//close php document
+		exit;
+	}
 }
 
 /*
